@@ -9,22 +9,24 @@ namespace SpecianPRJ.Blocks
 {
     public class Scheme
     {
-        Block InputBlock { get; set; }
-        Block OutputBlock { get; set; }
-        Block ContentBlock { get; set; }
+        public Block InputBlock { get; set; }
+        public Block OutputBlock { get; set; }
+        public Block ContentBlock { get; set; }
+        public string Name { get; set; }
+
 
         public Scheme()
         {
             InputBlock = new Block()
             {
-                Distribution = new IdentityDistribution(),
+                ComputedDistribution = new IdentityDistribution(),
                 Name = "InputBlock",
                 InputBlock = null,
                 OutputBlock = null,
             };
             OutputBlock = new Block()
             {
-                Distribution = new IdentityDistribution(),
+                ComputedDistribution = new IdentityDistribution(),
                 Name = "OutputBlock",
                 InputBlock = null,
                 OutputBlock = null,
