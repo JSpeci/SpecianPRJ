@@ -8,7 +8,8 @@ namespace SpecianPRJ.Interfaces
 {
     public interface IBlock
     {
-        List<IBlock> InputBlock { get; set; }
-        IBlock OutputBlock { get; set; }
+        List<IBlock> InputBlocks { get; set; }
+        List<IBlock> OutputBlocks { get; set; }
+        List<IItem> ParalelItems { get; set; }
     }
 }
