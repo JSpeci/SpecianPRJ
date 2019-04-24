@@ -35,7 +35,7 @@ namespace SpecianPRJ.Cli
 
             ;
 
-            Console.WriteLine(SchemeRender.RenderScheme(scheme));
+            Console.WriteLine(SchemeRenderer.RenderScheme(scheme));
             Console.ReadLine();
         }
 
