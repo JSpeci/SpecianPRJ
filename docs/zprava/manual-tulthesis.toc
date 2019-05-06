@@ -1,2 +1,20 @@
 \select@language {czech}
 \contentsline {section}{Seznam zkratek}{8}{chapter*.2}% 
+\contentsline {chapter}{\numberline {1}Přehled existujících softwarových nástrojů}{10}{chapter.1}% 
+\contentsline {chapter}{\numberline {2}Teoretický úvod}{11}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Distribuční funkce}{11}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Exponenciální rozdělění}{11}{section.2.2}% 
+\contentsline {section}{\numberline {2.3}Spolehlivost a střední doba mezi poruchami}{11}{section.2.3}% 
+\contentsline {subsubsection}{Střední doba mezi poruchami}{11}{subsubsection*.4}% 
+\contentsline {subsubsection}{Spolehlivost}{11}{subsubsection*.5}% 
+\contentsline {section}{\numberline {2.4}Analýza blokového diagramu bezporuchovosti (RBD)}{11}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}Základní zapojení bloků}{12}{section.2.5}% 
+\contentsline {chapter}{\numberline {3}Návrh desktopové aplikce .NET}{13}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Objektová struktura}{13}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Pomocné třídy}{13}{section.3.2}% 
+\contentsline {chapter}{\numberline {4}Průběh vývoje}{14}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Rozdělení projektu na subprojekty}{14}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}}{14}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}Testování}{15}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Návod k použití}{16}{chapter.6}% 
+\contentsline {chapter}{\numberline {7}Závěr}{17}{chapter.7}% 

@@ -1,1 +1,17 @@
 \BOOKMARK [1][-]{chapter*.2}{Seznam\040zkratek}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Přehled existujících softwarových nástrojů}{}% 2
+\BOOKMARK [0][-]{chapter.2}{Teoretický úvod}{}% 3
+\BOOKMARK [1][-]{section.2.1}{Distribuční funkce}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.2}{Exponenciální rozdělění}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.3}{Spolehlivost a střední doba mezi poruchami}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.4}{Analýza blokového diagramu bezporuchovosti \(RBD\)}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.5}{Základní zapojení bloků}{chapter.2}% 8
+\BOOKMARK [0][-]{chapter.3}{Návrh desktopové aplikce .NET}{}% 9
+\BOOKMARK [1][-]{section.3.1}{Objektová struktura}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.2}{Pomocné třídy}{chapter.3}% 11
+\BOOKMARK [0][-]{chapter.4}{Průběh vývoje}{}% 12
+\BOOKMARK [1][-]{section.4.1}{Rozdělení projektu na subprojekty}{chapter.4}% 13
+\BOOKMARK [1][-]{section.4.2}{}{chapter.4}% 14
+\BOOKMARK [0][-]{chapter.5}{Testování}{}% 15
+\BOOKMARK [0][-]{chapter.6}{Návod k použití}{}% 16
+\BOOKMARK [0][-]{chapter.7}{Závěr}{}% 17
