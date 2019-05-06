@@ -22,7 +22,6 @@ namespace SpecianPRJ.Blocks
         public Block InputBlock { get; set; }
         public Block OutputBlock { get; set; }
         public List<Block> ParalelBlocks { get; set; } = new List<Block>();
-        public List<Block> SerialBlocks { get; set; } = new List<Block>();
 
         //list of paralel items
         public List<IItem> ParalelItems { get; set; } = new List<IItem>();

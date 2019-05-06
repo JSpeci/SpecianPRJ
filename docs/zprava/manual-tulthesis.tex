@@ -68,8 +68,9 @@
 \clearpage
 
 \begin{abbrList}
-    \textbf{JSON} & JavaScript Object Notation \\
-    \textbf{LINQ} & Language Integrated Query \\
+    \textbf{RBD} & Reliability Block Diagram \\
+    %\textbf{JSON} & JavaScript Object Notation \\
+    %\textbf{LINQ} & Language Integrated Query \\
     %\textbf{PDF} & Portable Document Format \\
    
 \end{abbrList}
@@ -87,9 +88,59 @@
 
 \chapter{Teoretický úvod}
         
-    \section{Distribuční funkce}
+    \section{Distribuční funkce spojité náhodné veličiny}
+        Jedním z prostředků pro popis náhodné veličiny je distribuční funkce, která každému
+        reálnému číslu přiřazuje pravděpodobnost, že náhodná veličina nabude hodnoty menší nebo
+        rovné než toto číslo.\cite{6}
+        U spojité náhodné veličiny se užívá k jejímu popisu distribuční funkce F(x) definované vztahem: 
+        $$ F(x_{i}) = P(X<x_{i}) $$
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.75]{pic/distrib.png}
+                \caption{Příklad průběhu distribuční funkce exponenciálního rozdělení} \label{Obrázek č. 2.1}
+            \end{figure}
+        \subsubsection{Vlastnosti distribuční funkce}
+            \begin{itemize} 
+                \item
+                Hodnoty distribuční funkce leží v intervalu od nuly do jedné.
+                $$ 0 \leq F(x) \leq 1 $$
+                \item
+                Distribuční funkce je neklesající.
+                $$  P(x_{1} \leq X < x_{2}) = F(x_{2}) - F(x_{1})   pro x_{1} < x_{2} $$
+                \item
+                V záporném nekonečnu se blíží k nule, v kladném nekonečnu se blíží k jedné.
+                $$ F(- ∞) = 0, F(∞) = 1 $$ 
+            \end{itemize}
 
     \section{Exponenciální rozdělění}
+        Toto rozdělení má spojitá náhodná veličina X, která představuje dobu čekání do nastoupení (poissonovského) náhodného jevu, 
+        nebo délku intervalu (časového nebo délkového) mezi takovými dvěma jevy (např. doba čekání na obsluhu, vzdálenost mezi dvěma poškozenými místy na silnici, doba do poruchy).
+        Závisí na parametru $ \lambda $, což je převrácená hodnota střední hodnoty doby čekání do nastoupení sledovaného jevu. \cite{7}
+
+        Náhodná veličina X má exponenciální rozdělení Exp($ \lambda $) právě tehdy, když je hustota pravděpodobnosti dána vztahem:
+        $$  f(x) = \left\{ \begin{array}{ll}
+            0 & \mbox{pro }x<0 \\
+            \lambda.e^{\lambda.x} & \mbox{pro }x\geq 1
+            \end{array} \right. $$
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.75]{pic/hustota.png}
+                \caption{Příklad grafu hustoty pravděpodobnosti exponenciálního rozdělení} \label{Obrázek č. 2.1}
+            \end{figure}
+
+        \subsubsection*{Další vlastnosti}
+        \begin{itemize} 
+        \item
+            $  F(x) = \left\{ \begin{array}{ll}
+                0 & \mbox{pro }x<0 \\
+                1-e^{-\lambda.x} & \mbox{pro }x\geq 1
+                \end{array} \right. $
+        \item
+            $ E(x) = \frac{1}{\lambda}  $
+        \item
+            $ D(x) = \frac{1}{\lambda^{2}}  $
+
+        \end{itemize}
 
     \section{Spolehlivost a střední doba mezi poruchami}
         \subsubsection{Střední doba mezi poruchami}
@@ -102,7 +153,7 @@
             Spolehlivost je schopnost systému nebo součásti vykonávat požadované funkce za daných
             podmínek po určené časové období \cite{4} 
 
-            $$ Spolehlivost = e^{-(\frac{Time}{MTBF})}$$
+            $$ Spolehlivost = e^{-(\frac{Doba}{MTBF})}$$
     
     \section{Analýza blokového diagramu bezporuchovosti (RBD)}
 
@@ -142,7 +193,16 @@
 
 \chapter{Průběh vývoje}
     \section{Rozdělení projektu na subprojekty}
-    \section{}
+        Celkové řešení je rozděleno na několik podprojektů, tak aby každý odpovídal svému účelu použití.
+        \begin{itemize} 
+        \item SpecianPRJ
+        \item SpecianPRJ.Cli
+        \item SpecianPRJ.Gui
+        \item SpecianPRJ.Tests
+        \end{itemize}
+    \section{Zjednodušení diagramu}
+        Pro zjednodušení tvorby diagramu bylo zavedeno pravidlo, že se systém skládá pouze ze série bloků, z nichž některé mohou reprezentovat paralelní zapojení.
+        V programu nelze vytvořit diagram obsahující vazby mezi bloky, které spolu bezprostředně nesousedí.
 \chapter{Testování}
 
     Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
@@ -178,6 +238,10 @@
         IEEE 90
     \bibitem{5}
         %file:///C:/Users/King/Documents/PRJ/skripta/Plzen_06_10_2005.pdf
+    \bibitem{6}
+        https://homen.vsb.cz/~oti73/cdpast1/KAP03/PRAV3.HTM
+    \bibitem{7}
+        https://homen.vsb.cz/~oti73/cdpast1/KAP05/PRAV5.HTM
 \end{thebibliography}
 
 \end{document}
