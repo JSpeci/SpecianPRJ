@@ -17,9 +17,11 @@ namespace SpecianPRJ.Cli.CliRender
             sb.AppendLine(scheme.InputBlock.Name);
             sb.AppendLine(scheme.ContentBlock.Name);
 
+            int offset = 0;
             foreach(var s in scheme.ContentBlock.ParalelBlocks)
             {
-
+                offset = 1;
+                Console.WriteLine("Offset: " + offset);
             }
 
             sb.AppendLine(scheme.OutputBlock.Name);

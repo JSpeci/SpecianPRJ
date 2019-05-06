@@ -1,0 +1,103 @@
+\documentclass[FM,RP]{tulthesis}
+% tento dokument používá balíky specifické pro XeLaTeX a lze jej přeložit
+% jen XeLaTeXem, nemáte-li instalována použitá (komerční) písma, změňte
+% nebo vymažte příkazy \set...font na následujících řádcích
+
+\newcommand{\verze}{1.7}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
+\usepackage{xevlna}
+
+\usepackage{makeidx}
+\makeindex
+
+% fonty
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{graphicx}
+\usepackage{pdfpages} 
+
+
+% příkazy specifické pro tento dokument
+\newcommand{\argument}[1]{{\ttfamily\color{\tulcolor}#1}}
+\newcommand{\argumentindex}[1]{\argument{#1}\index{#1}}
+\newcommand{\prostredi}[1]{\argumentindex{#1}}
+\newcommand{\prikazneindex}[1]{\argument{\textbackslash #1}}
+\newcommand{\prikaz}[1]{\prikazneindex{#1}\index{#1@\textbackslash #1}}
+\newenvironment{myquote}{\begin{list}{}{\setlength\leftmargin\parindent}\item[]}{\end{list}}
+\newenvironment{listing}{\begin{myquote}\color{\tulcolor}}{\end{myquote}}
+\sloppy
+
+% deklarace pro titulní stránku
+
+\TULtitle{Vytvoření výukové aplikace řešící blokové diagramy bezporuchovosti (RBD)}{}
+\TULprogramme{B2646}{Informační technologie}{}
+\TULbranch{1802R007}{Informační technologie}{}
+\TULauthor{Jan Špecián}
+\TULsupervisor{Ing. Josef Chudoba, Ph.D.}
+\TULyear{2019}
+
+\begin{document}
+%\ThesisStart{pic/zadaniBPScan.pdf}
+\ThesisStart{male}
+%\includepdf[scale=1,angle=0,pages=-]{pic/prohlaseni.pdf} 
+
+\begin{abstractCZ}
+    Práce je zaměřena na tvorbu desktopové aplikace pro tvorbu RBD diagramů a spojených výpočtů a vyzualizací.
+\end{abstractCZ}
+
+\begin{keywordsCZ}
+    RBD
+\end{keywordsCZ}
+
+\vspace{2cm}
+
+
+
+\clearpage
+
+\begin{acknowledgement}
+    Tímto bych rád poděkoval Ing. Josef Chudobovi, Ph.D. za věnovaný čas v konzultacích a odborné vedení plné trpělivosti a s tím spojené nabyté zkušenosti.
+\end{acknowledgement}
+
+\tableofcontents
+\listoffigures
+
+\clearpage
+
+\begin{abbrList}
+    \textbf{JSON} & JavaScript Object Notation \\
+    \textbf{LINQ} & Language Integrated Query \\
+    %\textbf{PDF} & Portable Document Format \\
+   
+\end{abbrList}
+
+\chapter*{Úvod}
+
+\chapter*{Přehled existujících softwarových nástrojů}
+
+\chapter*{Teoretický úvod}
+
+\chapter*{Návrh desktopové aplikce .NET}
+
+\chapter*{Průběh vývoje}
+
+\chapter*{Testování}
+
+\chapter*{Návod k použití}
+
+\chapter*{Závěr}
+
+
+
+\begin{thebibliography}{Mm99}
+    \bibitem{1}
+        ROTH, Daniel, Rick ANDERSON a Shaun LUTTIN, Introduction to ASP.NET Core [online]. Microsoft [cit. 2019-4-10]. Dostupné z: https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.2
+    \bibitem{2}
+        KURTZ, Jamie, 2013. ASP.NET MVC 4 and the Web API: building a REST service from start to finish. Berkeley, CA: Apress. Expert's voice in ASP.NET.
+    
+\end{thebibliography}
+
+\end{document}
