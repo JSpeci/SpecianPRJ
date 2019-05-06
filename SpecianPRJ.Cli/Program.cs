@@ -12,38 +12,38 @@ namespace SpecianPRJ.Cli
     {
         static void Main(string[] args)
         {
-            MyTest();
+            //MyTest();
         }
 
-        static void MyTest()
-        {
-            Console.WriteLine("Test of block");
+        //static void MyTest()
+        //{
+        //    Console.WriteLine("Test of block");
 
 
-            var scheme = generateTestData();
+        //    var scheme = generateTestData();
 
-            var contentBlock = new Block();
-            scheme.ContentBlock = contentBlock;
-
-
-            var blockA = new Block();
-            var blockB = new Block();
+        //    var contentBlock = new Block();
+        //    scheme.ContentBlock = contentBlock;
 
 
-            contentBlock.ParalelBlocks.Add(blockA);
-            contentBlock.ParalelBlocks.Add(blockB);
+        //    var blockA = new Block();
+        //    var blockB = new Block();
 
-            ;
 
-            Console.WriteLine(SchemeRenderer.RenderScheme(scheme));
-            Console.ReadLine();
-        }
+        //    contentBlock.ParalelBlocks.Add(blockA);
+        //    contentBlock.ParalelBlocks.Add(blockB);
 
-        static Scheme generateTestData()
-        {
-            var scheme = new Scheme();
-            scheme.Name = ("Test scheme");
-            return scheme;
-        }
+        //    ;
+
+        //    Console.WriteLine(SchemeRenderer.RenderScheme(scheme));
+        //    Console.ReadLine();
+        //}
+
+        //static Scheme generateTestData()
+        //{
+        //    var scheme = new Scheme();
+        //    scheme.Name = ("Test scheme");
+        //    return scheme;
+        //}
     }
 }

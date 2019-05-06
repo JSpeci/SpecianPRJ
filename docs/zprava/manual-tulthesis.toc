@@ -12,7 +12,13 @@
 \contentsline {section}{\numberline {2.5}Základní zapojení bloků}{13}{section.2.5}% 
 \contentsline {chapter}{\numberline {3}Návrh desktopové aplikce .NET}{15}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}Objektová struktura}{15}{section.3.1}% 
+\contentsline {subsubsection}{Item}{15}{subsubsection*.7}% 
+\contentsline {subsubsection}{Block}{15}{subsubsection*.8}% 
+\contentsline {subsubsection}{IDistribution}{15}{subsubsection*.9}% 
+\contentsline {subsubsection}{ExponencialDistribution}{15}{subsubsection*.10}% 
 \contentsline {section}{\numberline {3.2}Pomocné třídy}{15}{section.3.2}% 
+\contentsline {subsubsection}{SchemeHolder}{15}{subsubsection*.11}% 
+\contentsline {subsubsection}{SchemeClculator}{15}{subsubsection*.12}% 
 \contentsline {chapter}{\numberline {4}Průběh vývoje}{16}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Rozdělení projektu na subprojekty}{16}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Zjednodušení diagramu}{16}{section.4.2}% 

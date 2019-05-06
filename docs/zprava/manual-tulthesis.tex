@@ -188,8 +188,27 @@
 
 \chapter{Návrh desktopové aplikce .NET}
     \section{Objektová struktura}
+        \subsubsection{Item}
+            Instance třídy Item vyžaduje název bloku a rozdělení pravděpodobnosti. 
+        \subsubsection{Block}
+            Jedná se o hlavní stvební stavební prvek RBD diagramu. 
+            Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent. 
+            Dále může obsahovat kolekci paralelních bloků.
+        \subsubsection{IDistribution}
+            Rozhraní pro rozdělení pravděpodobnosti, které je jedním z atributů objektů typu Item, či může být spočítáno v objektu typu Block.
+        \subsubsection{ExponencialDistribution}
+            Instance této třídy reprezentuje konkrétní rozdělení pravděpodobnosti. Každá komponenta obsahuje vlastní objekt rozdělení.
 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.75]{pic/class.png}
+        \caption{Class diagram} \label{Obrázek č. 2.1}
+    \end{figure}
+    
     \section{Pomocné třídy}
+        \subsubsection{SchemeHolder}
+            
+        \subsubsection{SchemeClculator}
 
 \chapter{Průběh vývoje}
     \section{Rozdělení projektu na subprojekty}
@@ -203,13 +222,18 @@
     \section{Zjednodušení diagramu}
         Pro zjednodušení tvorby diagramu bylo zavedeno pravidlo, že se systém skládá pouze ze série bloků, z nichž některé mohou reprezentovat paralelní zapojení.
         V programu nelze vytvořit diagram obsahující vazby mezi bloky, které spolu bezprostředně nesousedí.
+        \begin{figure}[h]
+            \centering
+            \includegraphics[scale=0.75]{pic/moznosti.png}
+            \caption{Možnosti tvorby diagramu} \label{Obrázek č. 2.1}
+    \end{figure}
 \chapter{Testování}
 
     Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
     Za pomoci testování jsem došel ke správným výsledkům za pomoci připravené konfigurace a tím jsem ušetřil práci manuálním testováním.
     Další nespornou výhodou testování je odhalení chyb při změně tím,  že testovací metody odhalí neočekávané výledky.
 
-    Testované byly třídy pro výpočet distribuční funkce.
+    Testované byly třídy pro výpočet distribuční funkce. Testování probíhá za pomoci zaokrouhlení na 6 desetinných míst.
 
 \chapter{Návod k použití}
 
