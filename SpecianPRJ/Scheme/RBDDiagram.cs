@@ -11,13 +11,18 @@ namespace SpecianPRJ.Scheme
     /// </summary>
     public class RBDDiagram
     {
-        public SchemeCalculator SchemeCalculator { get; internal set; }
+        private SchemeCalculator SchemeCalculator;
         public SchemeHolder SchemeHolder { get; internal set; }
 
         public RBDDiagram()
         {
             SchemeHolder = new SchemeHolder();
             SchemeCalculator = new SchemeCalculator();
+        }
+
+        public void CalculateItself(double time)
+        {
+            SchemeCalculator.CalculateScheme(this.SchemeHolder);
         }
 
         public override string ToString()

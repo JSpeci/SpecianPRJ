@@ -56,7 +56,10 @@ namespace SpecianPRJ.Gui
         //compute button
         private void button3_Click(object sender, EventArgs e)
         {
-
+            if(double.TryParse(this.textBox5.Text, out var time))
+            {
+                diagram.CalculateItself(time);
+            }
         }
 
         private void updateTextFormOfDiagram()
@@ -78,7 +81,5 @@ namespace SpecianPRJ.Gui
         {
 
         }
-
-
     }
 }

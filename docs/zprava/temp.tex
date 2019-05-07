@@ -45,12 +45,24 @@
 %\includepdf[scale=1,angle=0,pages=-]{pic/prohlaseni.pdf} 
 
 \begin{abstractCZ}
-    Práce je zaměřena na tvorbu desktopové aplikace pro tvorbu RBD diagramů a spojených výpočtů a vyzualizací.
+    Práce je zaměřena na tvorbu desktopové aplikace v .NET Frameworku pro tvorbu RBD diagramů a s tím spojených výpočtů a vizualizací.
+    Výsledná aplikace by měla bých schopna dle uživatelem zadaného schématu funkčních bloků s definovanými parametry 
+    spočítat pravděpodobnost bezporuchového provozu, že výrobek se do času t nedostane do poruchového stavu.
 \end{abstractCZ}
 
 \begin{keywordsCZ}
-    RBD
+    Reliability block diagram, Pravděpodobnost poruchy, Intenzita poruch
 \end{keywordsCZ}
+
+\begin{abstractEN}
+    The work is focused on creating a desktop application in .NET Framework for creating RBD diagrams and related calculations and visualizations.
+    Software application as result of the work should be able to follow a user-defined function block diagram with predefined parameters ane should be able
+    to calculate the probability of non failure operationability of the product or system.
+\end{abstractEN}
+
+\begin{keywordsEN}
+    Reliability block diagram, Probability of failure, Reliability engineering
+\end{keywordsEN}
 
 \vspace{2cm}
 
@@ -154,11 +166,18 @@
             podmínek po určené časové období \cite{4} 
 
             $$ Spolehlivost = e^{-(\frac{Doba}{MTBF})}$$
-    
+
+        \subsubsection{Pravděpodobnost bezporuchovosti}
+            Značíme $ R(t) $. Udává pravděpodobnost, že výrobek do zadaného času $ t $ nebude mít poruchu. Jedná se o doplněk k hodnotě distribuční funkce $ F(t) $,
+            což udává pravděpodobnost, že výrobek bude mít do času $ t $ poruchu.\cite{5}
+
+            Pravděpodobnost bezporuchového provozu R(t) je dána vztahem:
+            $$ R(t)=1-F(t) $$
+   
     \section{Analýza blokového diagramu bezporuchovosti (RBD)}
 
         Analýza blokového diagramu bezporuchovosti (RBD - Reliability Block Diagram) je metoda analýzy systému. 
-        Diagram RBD je grafická reprezentace logické struktury systému v podobě podsystémů a/nebo součástí. 
+        Diagram RBD je grafická reprezentace logické struktury systému v podobě podsystémů, nebo jednotlivých součástí. 
         To umožňuje, aby byly cesty úspěchu (funkceschopného stavu) reprezentovány tak, jak jsou bloky (podsystémy/součásti) logicky propojeny.\cite{1}
 
         Blokové diagramy jsou mezi prvními úkoly dokončenými během etapy vymezení produktu. 
@@ -171,6 +190,8 @@
         \subsubsection*{Sériové zapojení}
             Při poruše jedné komponenty dojde k poruše celého systému. 
             Systém je v bezporuchovém stavu, pokud všechny jeho komponenty nemají poruchu.\cite{5}
+            Pravděpodobnost, že všechny komponenty (n) v sériovém systému budou mít poruchu je dána vztahem:
+            $$ R = R_{1}R_{2}...R_{n} = e^{-\lambda_{1}t}e^{-\lambda_{2}t}...e^{-\lambda_{n}t} = e^{-(\lambda_{1} + \lambda_{2} + ... +\lambda_{n})t} $$
             \begin{figure}[h]
                 \centering
                 \includegraphics[scale=0.75]{pic/seriove.png}
@@ -179,7 +200,9 @@
 
         \subsubsection*{Paralelní zapojení}
             K poruše celého systemu dochází pokud jsou v poruše všechny jeho komponenty. Bezporuchový stav trvá, dokud je alespoň jedna komponenta v bezporuchovém stavu.
-            Z hlediska odhadu pravděpodobnosti představuje paralelní systém nejlepší variantu pro odhad pravděpodobnosti bezporuchového stavu.\cite{5}
+            Z hlediska odhadu pravděpodobnosti představuje paralelní systém nejlepší variantu pro odhad pravděpodobnosti bezporuchového stavu.
+            Pravděpodobnost, že všechny komponenty (n) v paralelním systému budou mít poruchu je dána vztahem:
+            $$ F = F_{1}F_{2}...F_{n} = (1-e^{-\lambda_{1}t})(1-e^{-\lambda_{2}t})...(1-e^{-\lambda_{n}t}) $$
             \begin{figure}[h]
                 \centering
                 \includegraphics[scale=0.75]{pic/paralelni.png}
@@ -189,11 +212,11 @@
 \chapter{Návrh desktopové aplikce .NET}
     \section{Objektová struktura}
         \subsubsection{Item}
-            Instance třídy Item vyžaduje název bloku a rozdělení pravděpodobnosti. 
+            Instance třídy Item jsou základní datové struktury vyžadující název bloku a rozdělení pravděpodobnosti.
         \subsubsection{Block}
             Jedná se o hlavní stvební stavební prvek RBD diagramu. 
-            Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent. 
-            Dále může obsahovat kolekci paralelních bloků.
+            Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent typu Item. 
+            %Dále může obsahovat kolekci paralelních bloků.
         \subsubsection{IDistribution}
             Rozhraní pro rozdělení pravděpodobnosti, které je jedním z atributů objektů typu Item, či může být spočítáno v objektu typu Block.
         \subsubsection{ExponencialDistribution}
@@ -201,27 +224,27 @@
 
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.75]{pic/class.png}
-        \caption{Class diagram} \label{Obrázek č. 2.1}
+        \includegraphics[scale=1]{pic/class.png}
+        \caption{Zjednodušený class diagram nejčastěji používaných objektů} \label{Obrázek č. 2.1}
     \end{figure}
     
     \section{Pomocné třídy}
-        \subsubsection{SchemeHolder}
-            
-        \subsubsection{SchemeClculator}
+        SchemeHolder je objekt držící jednotlivé bloky v seznamu, tak jak byly vloženy. 
+        SchemeCalculator je servisní třída, která má za úkol na základě předaných parametrů na uloženém schématu spočítat dílčí pravděpodobnosti bezporuchovosti jednotlivých komponent,
+         tak i celkového diagramu.
 
 \chapter{Průběh vývoje}
     \section{Rozdělení projektu na subprojekty}
         Celkové řešení je rozděleno na několik podprojektů, tak aby každý odpovídal svému účelu použití.
         \begin{itemize} 
-        \item SpecianPRJ
-        \item SpecianPRJ.Cli
-        \item SpecianPRJ.Gui
-        \item SpecianPRJ.Tests
+        \item SpecianPRJ - projekt obsahující veškeré objektové struktury.
+        \item SpecianPRJ.Cli - projekt zaměřený na manuální testování navržených struktur.
+        \item SpecianPRJ.Gui - grafické uživatelské rozhraní pro výslednou aplikaci.
+        \item SpecianPRJ.Tests - unit testy pro výpočty pravděpodobnosti na exponenciálním rozdělení.
         \end{itemize}
     \section{Zjednodušení diagramu}
         Pro zjednodušení tvorby diagramu bylo zavedeno pravidlo, že se systém skládá pouze ze série bloků, z nichž některé mohou reprezentovat paralelní zapojení.
-        V programu nelze vytvořit diagram obsahující vazby mezi bloky, které spolu bezprostředně nesousedí.
+        V aplikaci nelze vytvořit diagram obsahující vazby mezi bloky, které spolu bezprostředně nesousedí.
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.75]{pic/moznosti.png}

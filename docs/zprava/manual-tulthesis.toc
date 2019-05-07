@@ -8,20 +8,19 @@
 \contentsline {section}{\numberline {2.3}Spolehlivost a střední doba mezi poruchami}{12}{section.2.3}% 
 \contentsline {subsubsection}{Střední doba mezi poruchami}{12}{subsubsection*.5}% 
 \contentsline {subsubsection}{Spolehlivost}{13}{subsubsection*.6}% 
+\contentsline {subsubsection}{Pravděpodobnost bezporuchovosti}{13}{subsubsection*.7}% 
 \contentsline {section}{\numberline {2.4}Analýza blokového diagramu bezporuchovosti (RBD)}{13}{section.2.4}% 
 \contentsline {section}{\numberline {2.5}Základní zapojení bloků}{13}{section.2.5}% 
 \contentsline {chapter}{\numberline {3}Návrh desktopové aplikce .NET}{15}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}Objektová struktura}{15}{section.3.1}% 
-\contentsline {subsubsection}{Item}{15}{subsubsection*.7}% 
-\contentsline {subsubsection}{Block}{15}{subsubsection*.8}% 
-\contentsline {subsubsection}{IDistribution}{15}{subsubsection*.9}% 
-\contentsline {subsubsection}{ExponencialDistribution}{15}{subsubsection*.10}% 
+\contentsline {subsubsection}{Item}{15}{subsubsection*.8}% 
+\contentsline {subsubsection}{Block}{15}{subsubsection*.9}% 
+\contentsline {subsubsection}{IDistribution}{15}{subsubsection*.10}% 
+\contentsline {subsubsection}{ExponencialDistribution}{15}{subsubsection*.11}% 
 \contentsline {section}{\numberline {3.2}Pomocné třídy}{15}{section.3.2}% 
-\contentsline {subsubsection}{SchemeHolder}{15}{subsubsection*.11}% 
-\contentsline {subsubsection}{SchemeClculator}{15}{subsubsection*.12}% 
-\contentsline {chapter}{\numberline {4}Průběh vývoje}{16}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Rozdělení projektu na subprojekty}{16}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Zjednodušení diagramu}{16}{section.4.2}% 
-\contentsline {chapter}{\numberline {5}Testování}{17}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Návod k použití}{18}{chapter.6}% 
-\contentsline {chapter}{\numberline {7}Závěr}{19}{chapter.7}% 
+\contentsline {chapter}{\numberline {4}Průběh vývoje}{17}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Rozdělení projektu na subprojekty}{17}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Zjednodušení diagramu}{17}{section.4.2}% 
+\contentsline {chapter}{\numberline {5}Testování}{19}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Návod k použití}{20}{chapter.6}% 
+\contentsline {chapter}{\numberline {7}Závěr}{21}{chapter.7}% 

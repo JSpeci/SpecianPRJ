@@ -9,5 +9,15 @@ namespace SpecianPRJ.Scheme
     public class SchemeCalculator
     {
         //params
+        public void CalculateScheme(SchemeHolder scheme)
+        {
+            foreach(var block in scheme.Blocks)
+            {
+                foreach(var item in block.ParalelItems)
+                {
+
+                }
+            }
+        }
     }
 }
