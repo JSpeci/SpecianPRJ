@@ -43,14 +43,24 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -91,7 +101,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "2.0";
+            this.textBox2.Text = "0.75";
             // 
             // textBox1
             // 
@@ -99,7 +109,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "NameOfItem";
+            this.textBox1.Text = "Item1";
             // 
             // label3
             // 
@@ -149,7 +159,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "NameOfBlock";
+            this.textBox4.Text = "Block1";
             // 
             // button2
             // 
@@ -203,6 +213,15 @@
             this.panel3.Size = new System.Drawing.Size(240, 89);
             this.panel3.TabIndex = 1;
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(72, 29);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 3;
+            this.textBox5.Text = "10000";
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(6, 55);
@@ -233,14 +252,74 @@
             this.label9.Text = "Compute";
             this.label9.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox5
+            // panel4
             // 
-            this.textBox5.Location = new System.Drawing.Point(72, 29);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 3;
-            this.textBox5.Text = "10000";
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.numericUpDown2);
+            this.panel4.Controls.Add(this.button4);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Location = new System.Drawing.Point(12, 343);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(240, 89);
+            this.panel4.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 55);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(231, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "Show plot";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Index of item";
+            this.label4.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(176, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Show cumulative distribution of Item";
+            this.label10.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(178, 29);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.button5);
+            this.panel5.Location = new System.Drawing.Point(12, 438);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(240, 53);
+            this.panel5.TabIndex = 1;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(3, 13);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(231, 23);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Show Text output";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MainForm
             // 
@@ -249,6 +328,8 @@
             this.ClientSize = new System.Drawing.Size(987, 534);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
@@ -260,6 +341,10 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -286,6 +371,13 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button5;
     }
 }
 

@@ -14,11 +14,14 @@ namespace SpecianPRJ.Gui
     public partial class MainForm : Form
     {
         private RBDDiagram diagram;
+        private SchemeDrawHelper drawHelper;
+        private PlotWindow plotWindow;
 
         public MainForm()
         {
             InitializeComponent();
             diagram = new RBDDiagram();
+            drawHelper = new SchemeDrawHelper();
         }
                 
         //add block clicked
@@ -62,6 +65,28 @@ namespace SpecianPRJ.Gui
             }
         }
 
+        //show plot button 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            plotWindow = new PlotWindow();
+            plotWindow.Distribution = diagram.SchemeHolder.Blocks.First().ParalelItems.First().Distribution;
+            plotWindow.Minimum = 0;
+            plotWindow.Maximum = 60;
+            plotWindow.Show();
+        }
+
+        //index of Item to plot
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //show text output
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void updateTextFormOfDiagram()
         {
             this.label7.Text = diagram.ToString();
@@ -81,5 +106,7 @@ namespace SpecianPRJ.Gui
         {
 
         }
+
+
     }
 }
