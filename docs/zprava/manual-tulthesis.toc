@@ -22,5 +22,5 @@
 \contentsline {section}{\numberline {3.2}Zjednodušení diagramu}{16}{section.3.2}% 
 \contentsline {section}{\numberline {3.3}Testování}{16}{section.3.3}% 
 \contentsline {chapter}{\numberline {4}Návod k použití}{18}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Přehled existujících softwarových nástrojů}{19}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Závěr}{20}{chapter.6}% 
+\contentsline {chapter}{\numberline {5}Přehled existujících softwarových nástrojů}{20}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Závěr}{21}{chapter.6}% 
