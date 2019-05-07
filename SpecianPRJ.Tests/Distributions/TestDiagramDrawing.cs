@@ -49,17 +49,17 @@ namespace SpecianPRJ.Tests.Distributions
 
             var m = new Item("Item ", dist1);
 
-            a1.Add(a);
-            bc2.Add(b);
-            bc2.Add(c);
-            e1.Add(e);
-            jk2.Add(j);
-            jk2.Add(k);
-            i1.Add(i);
-            fgh3.Add(f);
-            fgh3.Add(g);
-            fgh3.Add(h);
-            m1.Add(m);
+            a1.AddITem(a);
+            bc2.AddITem(b);
+            bc2.AddITem(c);
+            e1.AddITem(e);
+            jk2.AddITem(j);
+            jk2.AddITem(k);
+            i1.AddITem(i);
+            fgh3.AddITem(f);
+            fgh3.AddITem(g);
+            fgh3.AddITem(h);
+            m1.AddITem(m);
         }
     }
 }

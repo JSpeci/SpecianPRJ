@@ -1,4 +1,5 @@
-﻿using SpecianPRJ.Interfaces;
+﻿using SpecianPRJ.Distributions;
+using SpecianPRJ.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,28 +12,36 @@ namespace SpecianPRJ.Blocks
     /// Block can be connected in serial line
     /// Block can contain n paralel 
     /// </summary>
-    public class Block : IBlock
+    public class Block
     {
         //identifier - should be another structure
         public string Name { get; set; }
 
-        //computed distribution from paralel items - COMPUTED - INTERNAL SET!
-        public IDistribution Distribution { get; internal set; }
+        ////computed distribution from paralel items - COMPUTED - INTERNAL SET!
+        //public IDistribution ComputedDistribution {
+        //    get {
+        //        return new ExponencialDistribution(0D);
+        //    }
+        //}
 
-        //Scheme interface
-        public IBlock InputBlock { get; set; }
-        public IBlock OutputBlock { get; set; }
+        public Block InputBlock { get; set; }
+        public Block OutputBlock { get; set; }
+        public List<Block> ParalelBlocks { get; set; } = new List<Block>();
+
+        public double LastRequestedReliability = 0D;
+        public double LastRequestedTime = 0D;
 
         //list of paralel items
         public List<IItem> ParalelItems { get; set; } = new List<IItem>();
-        List<IBlock> IBlock.InputBlock { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-        public void Add(IItem item)
+        public void AddITem(IItem item)
         {
             ParalelItems.Add(item);
         }
 
-        //List of paralel blocks
-        //public List<IItem> ParalelBlocks { get; set; }
+        public void AddBlock(Block item)
+        {
+            ParalelBlocks.Add(item);
+        }
     }
 }

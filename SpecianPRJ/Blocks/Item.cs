@@ -17,5 +17,8 @@ namespace SpecianPRJ.Blocks
             Name = name;
             Distribution = distribution;
         }
+
+        public double LastRequestedReliability = 0D;
+        public double LastRequestedTime = 0D;
     }
 }

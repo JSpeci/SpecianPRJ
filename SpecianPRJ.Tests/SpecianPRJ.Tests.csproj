@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Distributions\TestDiagramDrawing.cs" />
     <Compile Include="Distributions\ExponencialDistributuionTests.cs" />
+    <Compile Include="Distributions\IdentityDistributionTest.cs" />
     <Compile Include="Helpers\SchemeHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

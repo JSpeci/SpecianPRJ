@@ -45,12 +45,17 @@
   <ItemGroup>
     <Compile Include="Blocks\Block.cs" />
     <Compile Include="Blocks\Item.cs" />
+    <Compile Include="Blocks\Scheme.cs" />
     <Compile Include="Distributions\ExponencialDistribution.cs" />
+    <Compile Include="Distributions\IdentityDistribution.cs" />
     <Compile Include="Interfaces\IBlock.cs" />
     <Compile Include="Interfaces\IDistribution.cs" />
     <Compile Include="Interfaces\IItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheme\RBDDiagram.cs" />
+    <Compile Include="Scheme\SchemeCalculator.cs" />
+    <Compile Include="Scheme\SchemeHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
