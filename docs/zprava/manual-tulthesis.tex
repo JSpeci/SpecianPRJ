@@ -18,7 +18,7 @@
 \usepackage{xltxtra}
 \usepackage{graphicx}
 \usepackage{pdfpages} 
-
+\usepackage{wrapfig}
 
 % příkazy specifické pro tento dokument
 \newcommand{\argument}[1]{{\ttfamily\color{\tulcolor}#1}}
@@ -46,18 +46,18 @@
 
 \begin{abstractCZ}
     Práce je zaměřena na tvorbu desktopové aplikace v .NET Frameworku pro tvorbu RBD diagramů a s tím spojených výpočtů a vizualizací.
-    Výsledná aplikace by měla bých schopna dle uživatelem zadaného schématu funkčních bloků s definovanými parametry 
+    Výsledná aplikace by měla být schopna dle uživatelem zadaného schématu funkčních bloků s definovanými parametry 
     spočítat pravděpodobnost bezporuchového provozu, že výrobek se do času t nedostane do poruchového stavu.
 \end{abstractCZ}
 
 \begin{keywordsCZ}
-    Reliability block diagram, Pravděpodobnost poruchy, Intenzita poruch
+    Blokový diagram spolehlivosti, Pravděpodobnost poruchy, Intenzita poruch
 \end{keywordsCZ}
 
 \begin{abstractEN}
     The work is focused on creating a desktop application in .NET Framework for creating RBD diagrams and related calculations and visualizations.
-    Software application as result of the work should be able to follow a user-defined function block diagram with predefined parameters ane should be able
-    to calculate the probability of non failure operationability of the product or system.
+    Software application as result of the work should be able to follow a user-defined function block diagram with predefined parameters and should be able
+    to calculate the probability of non-failure operation ability of the product or system.
 \end{abstractEN}
 
 \begin{keywordsEN}
@@ -89,29 +89,29 @@
 
 \chapter*{Úvod}
     U každého systému je velmi důležitá jeho funkční spolehlivost během doby jeho životnosti. 
-    Každý systém, pokud má existovat a fungovat co nejdéle a přitom bez závad,
+    Každý systém, pokud má existovat a fungovat co nejdéle a přitom bez poruch,
     nebo alespoň s jejich co nejmenším počtem, musí splňovat jednu zásadní vlastnost, a tou je spolehlivost. 
     Požadavek na dostatečně velkou a často až maximální spolehlivost námi užívaných systémů má tudíž zcela zásadní význam z hlediska bezpečnostního, ekonomického i
     ekologického. 
 
     Cílem ročníkového projektu je navrhnout a implementovat desktopovou aplikaci pro tvorbu a jednoduchou vizualizaci RBD diagramů a výpočet parametrů spolehlivosti.
-    Aplikace by měla být schopna spočítat dobu do poruchy, či pravděpodobnost bezporuchovosti za zadané období pro každou komponentu zvlášť a i pro celkový, uživatelem
-    nadefinovaný diagram. Dále navrhnout další možnosti rozvoje aplikace.
+    Aplikace by měla být schopna spočítat dobu do poruchy, či pravděpodobnost bezporuchového provozu za zadané období pro každou komponentu zvlášť a i pro celkový, uživatelem
+    nadefinovaný systém. Dále navrhnout další možnosti rozvoje aplikace.
 
 \chapter{Teoretický úvod}
         
-    \section{Distribuční funkce spojité náhodné veličiny}
+    \section*{Distribuční funkce spojité náhodné veličiny}
         Jedním z prostředků pro popis náhodné veličiny je distribuční funkce, která každému
         reálnému číslu přiřazuje pravděpodobnost, že náhodná veličina nabude hodnoty menší nebo
         rovné než toto číslo.\cite{6}
-        U spojité náhodné veličiny se užívá k jejímu popisu distribuční funkce F(x) definované vztahem: 
-        $$ F(x_{i}) = P(X<x_{i}) $$
+        U spojité náhodné veličiny se užívá k jejímu popisu distribuční funkce F(t) definované vztahem: 
+        $$ F(t_{i}) = P(T<t_{i}) $$
             \begin{figure}[h]
                 \centering
                 \includegraphics[scale=0.75]{pic/distrib.png}
                 \caption{Příklad průběhu distribuční funkce exponenciálního rozdělení} 
             \end{figure}
-        \subsubsection{Vlastnosti distribuční funkce}
+        \subsubsection*{Vlastnosti distribuční funkce}
             \begin{itemize} 
                 \item
                 Hodnoty distribuční funkce leží v intervalu od nuly do jedné.
@@ -124,57 +124,61 @@
                 $$ F(- ∞) = 0, F(∞) = 1 $$ 
             \end{itemize}
 
-    \section{Exponenciální rozdělění}
-        Toto rozdělení má spojitá náhodná veličina X, která představuje dobu čekání do nastoupení (poissonovského) náhodného jevu, 
-        nebo délku intervalu (časového nebo délkového) mezi takovými dvěma jevy (např. doba čekání na obsluhu, vzdálenost mezi dvěma poškozenými místy na silnici, doba do poruchy).
-        Závisí na parametru $ \lambda $, což je převrácená hodnota střední hodnoty doby čekání do nastoupení sledovaného jevu. \cite{6}
-
-        Náhodná veličina X má exponenciální rozdělení Exp($ \lambda $) právě tehdy, když je hustota pravděpodobnosti dána vztahem:
-        $$  f(x) = \left\{ \begin{array}{ll}
-            0 & \mbox{pro }x<0 \\
-            \lambda.e^{\lambda.x} & \mbox{pro }x\geq 1
-            \end{array} \right. $$
-            \begin{figure}[h]
-                \centering
-                \includegraphics[scale=0.75]{pic/hustota.png}
-                \caption{Příklad grafu hustoty pravděpodobnosti exponenciálního rozdělení} 
-            \end{figure}
-
-        \subsubsection*{Další vlastnosti}
-        \begin{itemize} 
-        \item
-            $  F(x) = \left\{ \begin{array}{ll}
-                0 & \mbox{pro }x<0 \\
-                1-e^{-\lambda.x} & \mbox{pro }x\geq 1
-                \end{array} \right. $
-        \item
-            $ E(x) = \frac{1}{\lambda}  $
-        \item
-            $ D(x) = \frac{1}{\lambda^{2}}  $
-
-        \end{itemize}
-
-    \section{Spolehlivost a střední doba mezi poruchami}
-        \subsubsection{Střední doba mezi poruchami}
+    \section*{Spolehlivost a střední doba mezi poruchami}
+        \subsubsection*{Střední doba mezi poruchami}
             Základní veličinou pro měření spolehlivosti systému je střední doba mezi poruchami (MTBF, Mean Time
             Between Failure). Obvykle je udávána v hodinách. Čím vyšší je hodnota MTBF, tím vyšší je spolehlivost
             produktu.\cite{3}
             Je statistická veličina používaná ke kvantifikaci spolehlivosti součásti, či celého výrobku.
             Určuje se pro výrobek nebo zařízení, které se opravuje. \cite{3}
-        \subsubsection{Spolehlivost}
+        \subsubsection*{Spolehlivost}
             Spolehlivost je schopnost systému nebo součásti vykonávat požadované funkce za daných
             podmínek po určené časové období \cite{1} 
 
-            $$ Spolehlivost = e^{-(\frac{Doba}{MTBF})}$$
+            %$$ Spolehlivost = e^{-(\frac{Doba}{MTBF})}$$
 
-        \subsubsection{Pravděpodobnost bezporuchovosti}
+        \subsubsection*{Pravděpodobnost bezporuchovosti}
             Značíme $ R(t) $. Udává pravděpodobnost, že výrobek do zadaného času $ t $ nebude mít poruchu. Jedná se o doplněk k hodnotě distribuční funkce $ F(t) $,
             což udává pravděpodobnost, že výrobek bude mít do času $ t $ poruchu.\cite{5}
 
             Pravděpodobnost bezporuchového provozu R(t) je dána vztahem:
             $$ R(t)=1-F(t) $$
+
+            Pro výpočet pravděpodobnosti bezporuchového provozu se nejčastěji používá exponenciální rozdělení.
+
+    \section*{Exponenciální rozdělění}
+        Toto rozdělení má spojitá náhodná veličina X, která představuje dobu čekání do nastoupení (poissonovského) náhodného jevu, 
+        nebo délku intervalu (časového nebo délkového) mezi takovými dvěma jevy (např. doba čekání na obsluhu, vzdálenost mezi dvěma poškozenými místy na silnici, doba do poruchy).
+        Závisí na parametru $ \lambda $, což je převrácená hodnota střední hodnoty doby čekání do nastoupení sledovaného jevu. \cite{6}
+
+        Náhodná veličina X má exponenciální rozdělení Exp($ \lambda $) právě tehdy, když platí:
+        \subsubsection*{Hustota pravděpodobnosti}
+        $  f(t) = \left\{ \begin{array}{ll}
+            0 & \mbox{pro }t<0 \\
+            \lambda.e^{\lambda.t} & \mbox{pro }t\geq 1
+            \end{array} \right. $
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.75]{pic/hustota.png}
+                \caption{Příklad grafu hustoty pravděpodobnosti exponenciálního rozdělení} 
+            \end{figure}
+        \subsubsection*{Distribuční funkce}
+            $  F(t) = \left\{ \begin{array}{ll}
+                0 & \mbox{pro }t<0 \\
+                1-e^{-\lambda.t} & \mbox{pro }t\geq 1
+                \end{array} \right. $
+            \begin{figure}[h]
+                \centering
+                \includegraphics[scale=0.75]{pic/distrib.png}
+                \caption{Příklad průběhu distribuční funkce exponenciálního rozdělení} 
+            \end{figure}
+        \subsubsection*{Střední hodnota}
+            $$ E(t) = \frac{1}{\lambda}  $$
+        
+
+    
    
-    \section{Analýza blokového diagramu bezporuchovosti (RBD)}
+    \section*{Analýza blokového diagramu bezporuchovosti (RBD)}
 
         Analýza blokového diagramu bezporuchovosti (RBD - Reliability Block Diagram) je metoda analýzy systému. 
         Diagram RBD je grafická reprezentace logické struktury systému v podobě podsystémů, nebo jednotlivých součástí. 
@@ -186,55 +190,88 @@
         mají se neustále rozšiřovat do větších úrovní podrobnosti, 
         jakmile budou k dispozici data, aby bylo možné činit rozhodnutí a provádět optimalizace nákladů a přínosů.\cite{2}
 
-    \section{Základní zapojení bloků}
+    \section*{Základní zapojení bloků}
         \subsubsection*{Sériové zapojení}
             Při poruše jedné komponenty dojde k poruše celého systému. 
             Systém je v bezporuchovém stavu, pokud všechny jeho komponenty nemají poruchu.\cite{5}
-            Pravděpodobnost, že všechny komponenty (n) v sériovém systému budou mít poruchu je dána vztahem:
+            Pravděpodobnost bezporuchového provozu (n) zařízení v sériovém systému je dána vztahem:
             $$ R = R_{1}R_{2}...R_{n} = e^{-\lambda_{1}t}e^{-\lambda_{2}t}...e^{-\lambda_{n}t} = e^{-(\lambda_{1} + \lambda_{2} + ... +\lambda_{n})t} $$
             \begin{figure}[h]
                 \centering
                 \includegraphics[scale=0.75]{pic/seriove.png}
                 \caption{Příklad sériového zapojení komponent} 
             \end{figure}
-
+            \begin{wrapfigure}{r}{265pt}
+                \begin{center}
+                    \includegraphics[scale=0.75]{pic/paralelni.png}
+                    \caption{Příklad paralelního zapojení kopmonent} 
+                \end{center}
+            \end{wrapfigure}
         \subsubsection*{Paralelní zapojení}
             K poruše celého systemu dochází pokud jsou v poruše všechny jeho komponenty. Bezporuchový stav trvá, dokud je alespoň jedna komponenta v bezporuchovém stavu.
+            
             Z hlediska odhadu pravděpodobnosti představuje paralelní systém nejlepší variantu pro odhad pravděpodobnosti bezporuchového stavu. \cite{5}
             Pravděpodobnost, že všechny komponenty (n) v paralelním systému budou mít poruchu je dána vztahem:
             $$ F = F_{1}F_{2}...F_{n} = (1-e^{-\lambda_{1}t})(1-e^{-\lambda_{2}t})...(1-e^{-\lambda_{n}t}) $$
-            \begin{figure}[h]
-                \centering
-                \includegraphics[scale=0.75]{pic/paralelni.png}
-                \caption{Příklad paralelního zapojení kopmonent} 
-            \end{figure}
+
+
+
+\chapter{Přehled existujících softwarových nástrojů}
+    Zde uvedu seznam existujících softwarových řešení pro výpočty v oblasti pravděpodobnosti a teorie spolehlivosti, jejichž prospekty a ukázky jsem prošel.
+    \begin{itemize} 
+    \item ReliaSoft - analýza spolehlivosti \cite{8}
+    \item Weibull.com - Reliability Analysis Software \cite{9}
+    \item ItemSoft - Reliability Engineering Software \cite{10}
+    \item AldService - Reliability Engineering \cite{11}
+    \item Bqr - Leader in Reliability \& Maintenance Engineering and EDA \cite{12}
+    \item Goldsim - Reliability Engineering and Risk Analysis for Complex Engineered Systems \cite{13}
+    \item R Project - free software environment for statistical computing and graphics \cite{14}
+    \end{itemize}
 
 \chapter{Návrh desktopové aplikce .NET}
-    \section{Objektová struktura}
-        \subsubsection{Item}
+    \section*{Objektová struktura}
+        \subsubsection*{Item}
             Instance třídy Item jsou základní datové struktury vyžadující název bloku a rozdělení pravděpodobnosti.
-        \subsubsection{Block}
+        \subsubsection*{Block}
             Jedná se o hlavní stvební stavební prvek RBD diagramu. 
             Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent typu Item. 
             %Dále může obsahovat kolekci paralelních bloků.
-        \subsubsection{IDistribution}
+        \subsubsection*{IDistribution}
             Rozhraní pro rozdělení pravděpodobnosti, které je jedním z atributů objektů typu Item, či může být spočítáno v objektu typu Block.
-        \subsubsection{ExponencialDistribution}
+        \subsubsection*{ExponencialDistribution}
             Instance této třídy reprezentuje konkrétní rozdělení pravděpodobnosti. Každá komponenta obsahuje vlastní objekt rozdělení.
+        \begin{wrapfigure}{l}{265pt}
+            \begin{center}
+                \includegraphics[width=250pt]{pic/class.png}
+                \caption{Zjednodušený class diagram nejčastěji používaných objektů}
+            \end{center}
+        \end{wrapfigure}
 
-    \begin{figure}[h]
-        \centering
-        \includegraphics[scale=1]{pic/class.png}
-        \caption{Zjednodušený class diagram nejčastěji používaných objektů} 
-    \end{figure}
+    %\begin{figure}[b]
+     %   \centering
+    %    \includegraphics[scale=0.6]{pic/class.png}
+    %    \caption{Zjednodušený class diagram nejčastěji používaných objektů} 
+    %\end{figure}
     
-    \section{Pomocné třídy}
+    \section*{Pomocné třídy}
         SchemeHolder je objekt držící jednotlivé bloky v seznamu, tak jak byly vloženy. 
         SchemeCalculator je servisní třída, která má za úkol na základě předaných parametrů na uloženém schématu spočítat dílčí pravděpodobnosti bezporuchovosti jednotlivých komponent,
          tak i celkového diagramu.
 
 \chapter{Průběh vývoje}
-    \section{Rozdělení projektu na subprojekty}
+    Pro vývoj jsem se rozhodl použít WinForms z .NET Frameworku, jelikož umožňuje jednoduchou tvorbu formulářových aplikací pomocí grafického designeru.
+    Objektová struktura pro uložení diagramu je složena ze seznamu objeků typu Block. Tyto objekty lze řadit za sebe do série.
+
+    \section*{Zjednodušení diagramu}
+        Pro zjednodušení tvorby diagramu bylo zavedeno pravidlo, že se systém skládá pouze ze série bloků, z nichž některé mohou reprezentovat paralelní zapojení.
+        V aplikaci nelze vytvořit diagram obsahující vazby mezi bloky, které spolu bezprostředně nesousedí. Na obrázku č. 4.1 vidíme typ diagramu, jaký lze vytvořit.
+        \begin{figure}[h]
+          \centering
+           \includegraphics[scale=0.55]{pic/moznosti.png}
+           \caption{Možnosti tvorby diagramu} 
+        \end{figure}
+
+    \section*{Rozdělení projektu na subprojekty}
         Celkové řešení je rozděleno na několik podprojektů, tak aby každý odpovídal svému účelu použití.
         \begin{itemize} 
         \item SpecianPRJ - projekt obsahující veškeré objektové struktury.
@@ -242,20 +279,13 @@
         \item SpecianPRJ.Gui - grafické uživatelské rozhraní pro výslednou aplikaci.
         \item SpecianPRJ.Tests - unit testy pro výpočty pravděpodobnosti na exponenciálním rozdělení.
         \end{itemize}
-    \section{Zjednodušení diagramu}
-        Pro zjednodušení tvorby diagramu bylo zavedeno pravidlo, že se systém skládá pouze ze série bloků, z nichž některé mohou reprezentovat paralelní zapojení.
-        V aplikaci nelze vytvořit diagram obsahující vazby mezi bloky, které spolu bezprostředně nesousedí.
-        \begin{figure}[h]
-            \centering
-            \includegraphics[scale=0.75]{pic/moznosti.png}
-            \caption{Možnosti tvorby diagramu} 
-        \end{figure}
-    \section{Testování}
-        Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
-        Za pomoci testování jsem došel ke správným výsledkům za pomoci připravené konfigurace a tím jsem ušetřil práci manuálním testováním.
-        Další nespornou výhodou testování je odhalení chyb při změně tím,  že testovací metody odhalí neočekávané výledky.
 
-        Testované byly třídy pro výpočet distribuční funkce. Testování probíhá za pomoci zaokrouhlení na 6 desetinných míst.
+    \section*{Testování}
+        Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
+        %Za pomoci testování jsem došel ke správným výsledkům za pomoci připravené konfigurace a tím jsem ušetřil práci manuálním testováním.
+        Nespornou výhodou testování je odhalení chyb při změně tím, že testovací metody odhalí neočekávané výledky.
+        Pomocí unit testů bylo vyzkoušeno, zda třída ExponencialDistribution vrací správné hodnoty při zadaném parametru $ \lambda $, 
+        kterými jsou například střední hodnota, či hodnota distribuční funkce $ F(t) $. Porovnání výstupních hodnot probíhá po zaokrouhlení na 6 desetinných míst.
 
 \chapter{Návod k použití}
 
@@ -279,42 +309,30 @@
         \caption{Ovládací panel grafického uživatelského rozhraní} 
     \end{figure}
 
-\chapter{Přehled existujících softwarových nástrojů}
-    Zde uvedu seznam existujících softwarových řešení pro výpočty v oblasti pravděpodobnosti a teorie spolehlivosti, jejichž prospekty a ukázky jsem prošel.
-    \begin{itemize} 
-    \item ReliaSoft - analýza spolehlivosti
-    \item Weibull.com - Reliability Analysis Software
-    \item ItemSoft - Reliability Engineering Software
-    \item AldService - Reliability Engineering
-    \item Bqr - Leader in Reliability \& Maintenance Engineering and EDA
-    \item Goldsim - Reliability Engineering and Risk Analysis for Complex Engineered Systems
-    \item R Project - free software environment for statistical computing and graphics
-    \end{itemize}
 
 \chapter{Závěr}
-    \section*{Dosažené výsledky}
-    Ve vývojovém studiu Microsoft Visual Studio jsem vytvořil odpovídající projekt s rozdělenou strukturou podprojektů. 
-    Seznámil jsem se s programovacím jazykem C\# a jeho základními objektovými principy. 
+    Ve vývojovém studiu Microsoft Visual Studio byl vytvořen projekt s rozdělenou strukturou podprojektů.
+
     Seznámil jsem se s teorií pravděpodobnosti a teorií spolehlivosti.
     Navrhl jsem jednoduchou objektovou strukturu, na níž jsem si vyzkoušel spočítat pravděpodobnost bezporuchovosti, 
     distribuční funkci pro exponenciální rozdělení a další potřebné charakteristiky.
 
-    Na základě této objektové struktury jsem navrhl přehledné grafické rozhraní za pomoci knihoven WinForms, 
+    Na základě této objektové struktury jsem navrhl grafické rozhraní za pomoci knihoven WinForms, 
     ve kterém uživatel aplikace snadno nadefinuje strukturu komponent v sérii a může se na definovanou strukturu dotázat
-    na pravděpodobnost bezporuchovosti v zadaném čase. Správnost výpočtů pravděpodobností a hodno distribuční funkce byla otestována za pomoci unit testů.
+    na pravděpodobnost bezporuchovosti v zadaném čase. Správnost výpočtů pravděpodobností a hodnot distribuční funkce byla otestována za pomoci unit testů.
 
     Tvorba a zapojení komponent v RBD diagramu bylo zjednodušeno na sériový systém, kde jednotlivé komponenty mohou reprezentovat paralelní systém.
 
     Při vývoji aplikace jsem používal verzovací nástroj git, který mi umožnil si v různých větvích držet různé funkční a nefunkční cesty vývoje a spojovat do sebe různé
     věvte pro dosažení funkčního celku. \cite{7}
 
-    \section*{Možnosti rozvoje aplikace}
-    Aplikace nenabízí možnost tvorby složitějších schémat a propojení komponent tak, aby diagram odpovídal reálnému zadání. 
-    Pro takové vylepšení by bylo nutné předělat objektový model včetně výpočetního postupu.
-    Dále by bylo vhodné k aplikaci přidat možnost uložení a znovuotevírání uložených diagramů, 
+    Pro možnost složitějších diagramů by bylo nutné předělat objektový model včetně výpočetního postupu tak, aby paralelní bloky mohly být opět jiné objekty typu Block.
+    Dále by bylo vhodné k aplikaci přidat možnost uložení a znovuotevírání uložených diagramů,
     nyní je aplikace pouze demonstrační a diagram je nutné manuálně vytvořit po spuštění.
 
-    V práci jsem si neporadil s vykreslením schématu, ani průběhů distribuční funkce. Veškeré výstupy jsou v textové podobě.
+    V práci jsem si poradil s vykreslením schématu za pomoci kreslení geometrických primitiv a jejich skládání. 
+    Pro zobrazení distribučních funkcí jednotlivých komponent diagramu byla použita knihovna OxyPlot.
+    Veškeré výstupy jsou dostupné i v textové podobě.
 
     Pro grafické uživatelské rozhraní by bylo vhodné přejít na knihovny WPF, které jsou nástupcem zastaralých Windows Forms.
 
@@ -331,6 +349,20 @@
         OTIPKA, Petr a Vladislav ŠMAJSTRLA. PRAVDĚPODOBNOST A STATISTIKA [online]. VYSOKÁ ŠKOLA BÁŇSKÁ - TECHNICKÁ UNIVERZITA OSTRAVA [cit. 2019-05-01]. Dostupné z: https://homen.vsb.cz/~oti73/cdpast1/
     \bibitem{7}
         We bring the awesome Git SCM to Windows. Git for windows [online]. [cit.2019-04-24]. Dostupné z: https://gitforwindows.org/
+    \bibitem{8}
+        ReliaSoft. ReliaSoft [online]. [cit. 2019-05-07]. Dostupné z: https://www.reliasoft.com/
+    \bibitem{9}
+        Reliability Engineering Resource Website. Weibull.com [online]. [cit. 2019-05-07]. Dostupné z: https://weibull.com/
+    \bibitem{10}
+        Item software. Item software [online]. [cit. 2019-05-07]. Dostupné z: http://www.itemsoft.com/
+    \bibitem{11}
+        RAMS (Reliability, Availability, Maintainability and Safety) Software. Reliability Software, Safety and Quality Solutions - ALD Service [online]. [cit. 2019-05-07]. Dostupné z: https://aldservice.com/reliability-products/rams-software.html
+    \bibitem{12}
+        BQR Reliability Engineering. BQR - Leader in Reliability \& Maintenance Engineering and EDA [online]. [cit. 2019-05-07]. Dostupné z: https://www.bqr.com/
+    \bibitem{13}
+        GoldSim: Monte Carlo Simulation Software. GoldSim Technology Group [online]. [cit. 2019-05-07]. Dostupné z: https://www.goldsim.com/Web/Products/GoldSim/Overview/
+    \bibitem{14}
+        The R Project for Statistical Computing. The R Project [online]. [cit. 2019-05-07]. Dostupné z: https://www.r-project.org/
 \end{thebibliography}
 
 \end{document}

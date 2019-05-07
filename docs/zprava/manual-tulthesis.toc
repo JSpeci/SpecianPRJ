@@ -1,26 +1,8 @@
 \select@language {czech}
 \contentsline {section}{Seznam zkratek}{8}{chapter*.2}% 
 \contentsline {chapter}{\numberline {1}Teoretický úvod}{10}{chapter.1}% 
-\contentsline {section}{\numberline {1.1}Distribuční funkce spojité náhodné veličiny}{10}{section.1.1}% 
-\contentsline {subsubsection}{Vlastnosti distribuční funkce}{10}{subsubsection*.4}% 
-\contentsline {section}{\numberline {1.2}Exponenciální rozdělění}{11}{section.1.2}% 
-\contentsline {section}{\numberline {1.3}Spolehlivost a střední doba mezi poruchami}{11}{section.1.3}% 
-\contentsline {subsubsection}{Střední doba mezi poruchami}{11}{subsubsection*.5}% 
-\contentsline {subsubsection}{Spolehlivost}{12}{subsubsection*.6}% 
-\contentsline {subsubsection}{Pravděpodobnost bezporuchovosti}{12}{subsubsection*.7}% 
-\contentsline {section}{\numberline {1.4}Analýza blokového diagramu bezporuchovosti (RBD)}{12}{section.1.4}% 
-\contentsline {section}{\numberline {1.5}Základní zapojení bloků}{12}{section.1.5}% 
-\contentsline {chapter}{\numberline {2}Návrh desktopové aplikce .NET}{14}{chapter.2}% 
-\contentsline {section}{\numberline {2.1}Objektová struktura}{14}{section.2.1}% 
-\contentsline {subsubsection}{Item}{14}{subsubsection*.8}% 
-\contentsline {subsubsection}{Block}{14}{subsubsection*.9}% 
-\contentsline {subsubsection}{IDistribution}{14}{subsubsection*.10}% 
-\contentsline {subsubsection}{ExponencialDistribution}{14}{subsubsection*.11}% 
-\contentsline {section}{\numberline {2.2}Pomocné třídy}{14}{section.2.2}% 
-\contentsline {chapter}{\numberline {3}Průběh vývoje}{16}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Rozdělení projektu na subprojekty}{16}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Zjednodušení diagramu}{16}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Testování}{16}{section.3.3}% 
-\contentsline {chapter}{\numberline {4}Návod k použití}{18}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Přehled existujících softwarových nástrojů}{20}{chapter.5}% 
-\contentsline {chapter}{\numberline {6}Závěr}{21}{chapter.6}% 
+\contentsline {chapter}{\numberline {2}Přehled existujících softwarových nástrojů}{14}{chapter.2}% 
+\contentsline {chapter}{\numberline {3}Návrh desktopové aplikce .NET}{15}{chapter.3}% 
+\contentsline {chapter}{\numberline {4}Průběh vývoje}{16}{chapter.4}% 
+\contentsline {chapter}{\numberline {5}Návod k použití}{18}{chapter.5}% 
+\contentsline {chapter}{\numberline {6}Závěr}{20}{chapter.6}% 
