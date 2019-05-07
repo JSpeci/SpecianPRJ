@@ -1,4 +1,5 @@
 ﻿using SpecianPRJ.Blocks;
+using SpecianPRJ.Cli.CliRender;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,23 +12,38 @@ namespace SpecianPRJ.Cli
     {
         static void Main(string[] args)
         {
-            MyTest();
+            //MyTest();
         }
 
-        static void MyTest()
-        {
-            Console.WriteLine("Test of block");
+        //static void MyTest()
+        //{
+        //    Console.WriteLine("Test of block");
 
 
-            var scheme = generateTestData();
+        //    var scheme = generateTestData();
 
-            ;
-        }
+        //    var contentBlock = new Block();
+        //    scheme.ContentBlock = contentBlock;
 
-        static Scheme generateTestData()
-        {
-            var scheme = new Scheme();
-            return scheme;
-        }
+
+        //    var blockA = new Block();
+        //    var blockB = new Block();
+
+
+        //    contentBlock.ParalelBlocks.Add(blockA);
+        //    contentBlock.ParalelBlocks.Add(blockB);
+
+        //    ;
+
+        //    Console.WriteLine(SchemeRenderer.RenderScheme(scheme));
+        //    Console.ReadLine();
+        //}
+
+        //static Scheme generateTestData()
+        //{
+        //    var scheme = new Scheme();
+        //    scheme.Name = ("Test scheme");
+        //    return scheme;
+        //}
     }
 }
