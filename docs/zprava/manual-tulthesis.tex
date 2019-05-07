@@ -81,22 +81,22 @@
 
 \begin{abbrList}
     \textbf{RBD} & Reliability Block Diagram \\
-    %\textbf{JSON} & JavaScript Object Notation \\
-    %\textbf{LINQ} & Language Integrated Query \\
-    %\textbf{PDF} & Portable Document Format \\
+    \textbf{WPF} & Windows Presentation Foundation \\
+    \textbf{GUI} & Graphical User Interface \\
+    \textbf{CLI} & Command Line Interface \\
    
 \end{abbrList}
 
 \chapter*{Úvod}
-    U každého systému je velmi důležitá jeho funkční spolehlivost během doby jeho životnosti. Každý systém, pokud má existovat a fungovat co nejdéle a přitom bez závad,
+    U každého systému je velmi důležitá jeho funkční spolehlivost během doby jeho životnosti. 
+    Každý systém, pokud má existovat a fungovat co nejdéle a přitom bez závad,
     nebo alespoň s jejich co nejmenším počtem, musí splňovat jednu zásadní vlastnost, a tou je spolehlivost. 
     Požadavek na dostatečně velkou a často až maximální spolehlivost námi užívaných systémů má tudíž zcela zásadní význam z hlediska bezpečnostního, ekonomického i
     ekologického. 
 
     Cílem ročníkového projektu je navrhnout a implementovat desktopovou aplikaci pro tvorbu a jednoduchou vizualizaci RBD diagramů a výpočet parametrů spolehlivosti.
-    Zobrazit střední dobu do poruchy pro každý blok a poskytnout možnost vizualizace distribuční funkce pro každý blok v kombinace sérriového a paralelního zapojení bloků.
-
-\chapter{Přehled existujících softwarových nástrojů}
+    Aplikace by měla být schopna spočítat dobu do poruchy, či pravděpodobnost bezporuchovosti za zadané období pro každou komponentu zvlášť a i pro celkový, uživatelem
+    nadefinovaný diagram. Dále navrhnout další možnosti rozvoje aplikace.
 
 \chapter{Teoretický úvod}
         
@@ -250,18 +250,19 @@
             \includegraphics[scale=0.75]{pic/moznosti.png}
             \caption{Možnosti tvorby diagramu} \label{Obrázek č. 2.1}
     \end{figure}
-\chapter{Testování}
+    \section{Testování}
+        Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
+        Za pomoci testování jsem došel ke správným výsledkům za pomoci připravené konfigurace a tím jsem ušetřil práci manuálním testováním.
+        Další nespornou výhodou testování je odhalení chyb při změně tím,  že testovací metody odhalí neočekávané výledky.
 
-    Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
-    Za pomoci testování jsem došel ke správným výsledkům za pomoci připravené konfigurace a tím jsem ušetřil práci manuálním testováním.
-    Další nespornou výhodou testování je odhalení chyb při změně tím,  že testovací metody odhalí neočekávané výledky.
-
-    Testované byly třídy pro výpočet distribuční funkce. Testování probíhá za pomoci zaokrouhlení na 6 desetinných míst.
+        Testované byly třídy pro výpočet distribuční funkce. Testování probíhá za pomoci zaokrouhlení na 6 desetinných míst.
 
 \chapter{Návod k použití}
 
-    Pro spuštění aplikace pro vývoj je potřeba mít nainstalované Visual Studio 2017 a novější. V přiloženém CD ve složce SpecianPRJ spusťte soubor SpecianPRJ.sln. 
-    Pro standartní spuštění aplikace stačí otevřít soubor s příponou .exe.
+    Pro spuštění aplikace pro vývoj je potřeba mít nainstalované Visual Studio 2017 a novější. 
+    V přiloženém CD ve složce SpecianPRJ spusťte soubor SpecianPRJ.sln. 
+
+    Pro standartní spuštění aplikace stačí otevřít soubor SpecianPRJ.Gui.exe ve složce SpecianPRJ\\SpecianPRJ.Gui\\bin\\Debug.
 
     Pro obě varianty spuštní je nutným předpokladem nainstalovaný plný .NET Framework 4.6.1 a novější. 
 
@@ -270,7 +271,42 @@
     \section*{Přidání prvku}
     \section*{Výpočty}
 
+\chapter{Přehled existujících softwarových nástrojů}
+    Zde uvedu seznam existujících softwarových řešení pro výpočty v oblasti pravděpodobnosti a teorie spolehlivosti, jejichž prospekty a ukázky jsem prošel.
+    \begin{itemize} 
+    \item ReliaSoft - analýza spolehlivosti
+    \item Weibull.com - Reliability Analysis Software
+    \item ItemSoft - Reliability Engineering Software
+    \item AldService - Reliability Engineering
+    \item Bqr - Leader in Reliability \& Maintenance Engineering and EDA
+    \item Goldsim - Reliability Engineering and Risk Analysis for Complex Engineered Systems
+    \item R Project - free software environment for statistical computing and graphics
+    \end{itemize}
+
 \chapter{Závěr}
+    \section*{Dosažené výsledky}
+    Ve vývojovém studiu Microsoft Visual Studio jsem vytvořil odpovídající projekt s rozdělenou strukturou podprojektů. 
+    Seznámil jsem se s programovacím jazykem C\# a jeho základními objektovými principy. 
+    Seznámil jsem se s teorií pravděpodobnosti a teorií spolehlivosti.
+    Navrhl jsem jednoduchou objektovou strukturu, na níž jsem si vyzkoušel spočítat pravděpodobnost bezporuchovosti, 
+    distribuční funkci pro exponenciální rozdělení a další potřebné charakteristiky.
+
+    Na základě této objektové struktury jsem navrhl přehledné grafické rozhraní za pomoci knihoven WinForms, 
+    ve kterém uživatel aplikace snadno nadefinuje strukturu komponent v sérii a může se na definovanou strukturu dotázat
+    na pravděpodobnost bezporuchovosti v zadaném čase. Správnost výpočtů pravděpodobností a hodno distribuční funkce byla otestována za pomoci unit testů.
+
+    Tvorba a zapojení komponent v RBD diagramu bylo zjednodušeno na sériový systém, kde jednotlivé komponenty mohou reprezentovat paralelní systém.
+
+    Při vývoji aplikace jsem používal verzovací nástroj git, který mi umožnil si v různých větvích držet různé funkční a nefunkční cesty vývoje a spojovat do sebe různé
+    věvte pro dosažení funkčního celku. \cite{8}
+
+    \section*{Možnosti rozvoje aplikace}
+    Aplikace nenabízí možnost tvorby složitějších schémat a propojení komponent tak, aby diagram odpovídal reálnému zadání. 
+    Pro takové vylepšení by bylo nutné předělat objektový model včetně výpočetního postupu.
+    Dále by bylo vhodné k aplikaci přidat možnost uložení a znovuotevírání uložených diagramů, 
+    nyní je aplikace pouze demonstrační a diagram je nutné manuálně vytvořit po spuštění.
+
+    Pro grafické uživatelské rozhraní by bylo vhodné přejít na knihovny WPF, které jsou nástupcem zastaralých Windows Forms.
 
 
 
@@ -289,6 +325,8 @@
         https://homen.vsb.cz/~oti73/cdpast1/KAP03/PRAV3.HTM
     \bibitem{7}
         https://homen.vsb.cz/~oti73/cdpast1/KAP05/PRAV5.HTM
+    \bibitem{8}
+        We bring the awesome Git SCM to Windows. Git for windows [online]. [cit.2019-04-24]. Dostupné z: https://gitforwindows.org/
 \end{thebibliography}
 
 \end{document}

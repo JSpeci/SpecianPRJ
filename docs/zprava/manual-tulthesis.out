@@ -1,17 +1,17 @@
 \BOOKMARK [1][-]{chapter*.2}{Seznam\040zkratek}{}% 1
-\BOOKMARK [0][-]{chapter.1}{Přehled existujících softwarových nástrojů}{}% 2
-\BOOKMARK [0][-]{chapter.2}{Teoretický úvod}{}% 3
-\BOOKMARK [1][-]{section.2.1}{Distribuční funkce spojité náhodné veličiny}{chapter.2}% 4
-\BOOKMARK [1][-]{section.2.2}{Exponenciální rozdělění}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.3}{Spolehlivost a střední doba mezi poruchami}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.4}{Analýza blokového diagramu bezporuchovosti \(RBD\)}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.5}{Základní zapojení bloků}{chapter.2}% 8
-\BOOKMARK [0][-]{chapter.3}{Návrh desktopové aplikce .NET}{}% 9
-\BOOKMARK [1][-]{section.3.1}{Objektová struktura}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.2}{Pomocné třídy}{chapter.3}% 11
-\BOOKMARK [0][-]{chapter.4}{Průběh vývoje}{}% 12
-\BOOKMARK [1][-]{section.4.1}{Rozdělení projektu na subprojekty}{chapter.4}% 13
-\BOOKMARK [1][-]{section.4.2}{Zjednodušení diagramu}{chapter.4}% 14
-\BOOKMARK [0][-]{chapter.5}{Testování}{}% 15
-\BOOKMARK [0][-]{chapter.6}{Návod k použití}{}% 16
-\BOOKMARK [0][-]{chapter.7}{Závěr}{}% 17
+\BOOKMARK [0][-]{chapter.1}{Teoretický úvod}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Distribuční funkce spojité náhodné veličiny}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.2}{Exponenciální rozdělění}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.3}{Spolehlivost a střední doba mezi poruchami}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.4}{Analýza blokového diagramu bezporuchovosti \(RBD\)}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.5}{Základní zapojení bloků}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Návrh desktopové aplikce .NET}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Objektová struktura}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.2}{Pomocné třídy}{chapter.2}% 10
+\BOOKMARK [0][-]{chapter.3}{Průběh vývoje}{}% 11
+\BOOKMARK [1][-]{section.3.1}{Rozdělení projektu na subprojekty}{chapter.3}% 12
+\BOOKMARK [1][-]{section.3.2}{Zjednodušení diagramu}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.3}{Testování}{chapter.3}% 14
+\BOOKMARK [0][-]{chapter.4}{Návod k použití}{}% 15
+\BOOKMARK [0][-]{chapter.5}{Přehled existujících softwarových nástrojů}{}% 16
+\BOOKMARK [0][-]{chapter.6}{Závěr}{}% 17

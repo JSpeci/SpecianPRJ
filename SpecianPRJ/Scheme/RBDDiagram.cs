@@ -22,7 +22,7 @@ namespace SpecianPRJ.Scheme
 
         public void CalculateItself(double time)
         {
-            SchemeCalculator.CalculateScheme(this.SchemeHolder);
+            SchemeCalculator.CalculateScheme(this.SchemeHolder, time);
         }
 
         public override string ToString()

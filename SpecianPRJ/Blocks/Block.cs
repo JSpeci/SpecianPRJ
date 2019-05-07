@@ -17,18 +17,19 @@ namespace SpecianPRJ.Blocks
         //identifier - should be another structure
         public string Name { get; set; }
 
-        //computed distribution from paralel items - COMPUTED - INTERNAL SET!
-        public IDistribution ComputedDistribution {
-            get {
-                return new ExponencialDistribution(0D);
-            }
-        }
+        ////computed distribution from paralel items - COMPUTED - INTERNAL SET!
+        //public IDistribution ComputedDistribution {
+        //    get {
+        //        return new ExponencialDistribution(0D);
+        //    }
+        //}
 
         public Block InputBlock { get; set; }
         public Block OutputBlock { get; set; }
         public List<Block> ParalelBlocks { get; set; } = new List<Block>();
 
         public double LastRequestedReliability = 0D;
+        public double LastRequestedTime = 0D;
 
         //list of paralel items
         public List<IItem> ParalelItems { get; set; } = new List<IItem>();
