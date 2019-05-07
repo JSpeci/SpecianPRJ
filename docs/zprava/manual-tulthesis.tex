@@ -230,28 +230,33 @@
 
 \chapter{Návrh desktopové aplikce .NET}
     \section*{Objektová struktura}
+        \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.85]{pic/class.png}
+        \caption{Zjednodušený class diagram nejčastěji používaných objektů} 
+    \end{figure}
         \subsubsection*{Item}
-            Instance třídy Item jsou základní datové struktury vyžadující název bloku a rozdělení pravděpodobnosti.
+            Instance třídy Item jsou objekty reprezentující jeden prvek diagramu, například na obrázku č. 1.4 block číslo 1. 
+            Obsahuje dva hlavní atributy a tím je druh rozdělelní pravděpodobnosti a jméno.
+            Každá komponenta obsahuje vlastní objekt rozdělení.
         \subsubsection*{Block}
             Jedná se o hlavní stvební stavební prvek RBD diagramu. 
             Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent typu Item. 
-            %Dále může obsahovat kolekci paralelních bloků.
+            Instance třídy Block reprezentuje například bloky č. 4 a 6 na obrázku č. 4.1.
+            Tyto bloky jsou spojovány do série za sebe. 
         \subsubsection*{IDistribution}
             Rozhraní pro rozdělení pravděpodobnosti, které je jedním z atributů objektů typu Item, či může být spočítáno v objektu typu Block.
+            Objekty imlementující toto rozhraní musí umět poskytnout střední hodnotu, hodnotu distribuční funkce v daném bodě, hodnotu pravděpodobnostní funkce v daném bodě.
         \subsubsection*{ExponencialDistribution}
-            Instance této třídy reprezentuje konkrétní rozdělení pravděpodobnosti. Každá komponenta obsahuje vlastní objekt rozdělení.
-        \begin{wrapfigure}{l}{265pt}
-            \begin{center}
-                \includegraphics[width=250pt]{pic/class.png}
-                \caption{Zjednodušený class diagram nejčastěji používaných objektů}
-            \end{center}
-        \end{wrapfigure}
+            Instance této třídy reprezentuje konkrétní exponenciální rozdělení pravděpodobnosti se zadaným parametrem $ \lambda $. 
 
-    %\begin{figure}[b]
-     %   \centering
-    %    \includegraphics[scale=0.6]{pic/class.png}
-    %    \caption{Zjednodušený class diagram nejčastěji používaných objektů} 
-    %\end{figure}
+
+        %\begin{wrapfigure}{l}{265pt}
+        %    \begin{center}
+        %        \includegraphics[width=250pt]{pic/class.png}
+        %        \caption{Zjednodušený class diagram nejčastěji používaných objektů}
+        %    \end{center}
+        %\end{wrapfigure}
     
     \section*{Pomocné třídy}
         SchemeHolder je objekt držící jednotlivé bloky v seznamu, tak jak byly vloženy. 
@@ -283,9 +288,38 @@
     \section*{Testování}
         Pro testování funkčních bloků byla použita výchozí knihovna pro Unit testování v prostředí .NET pro desktopové aplikace MSTest.
         %Za pomoci testování jsem došel ke správným výsledkům za pomoci připravené konfigurace a tím jsem ušetřil práci manuálním testováním.
+                \begin{wrapfigure}{l}{265pt}
+            \begin{center}
+                \includegraphics[width=250pt]{pic/testMethod.png}
+                \caption{Ukázka kódu unit testu}
+            \end{center}
+        \end{wrapfigure}
         Nespornou výhodou testování je odhalení chyb při změně tím, že testovací metody odhalí neočekávané výledky.
         Pomocí unit testů bylo vyzkoušeno, zda třída ExponencialDistribution vrací správné hodnoty při zadaném parametru $ \lambda $, 
-        kterými jsou například střední hodnota, či hodnota distribuční funkce $ F(t) $. Porovnání výstupních hodnot probíhá po zaokrouhlení na 6 desetinných míst.
+        kterými jsou například střední hodnota, či hodnota distribuční funkce $ F(t) $. Porovnání výstupních hodnot probíhá po zaokrouhlení na 12 desetinných míst.
+
+        \subsection*{Příklad testu}
+            Mějme veličinu s exponenciálním rozdělením a s střední hodnotou 13,5. Pak $\lambda = 1 / 13.5 \approx 0,074074 $.
+        %\begin{figure}[h]
+         % \centering
+          % \includegraphics[scale=0.75]{pic/testHustota.png}
+           %\caption{Hustota pravděpodobnosti exponenciálního rozdělení se střední hodnotou 1/13.5} 
+        %\end{figure}
+
+        \begin{wrapfigure}{l}{265pt}
+            \begin{center}
+                \includegraphics[width=250pt]{pic/testHustota.png}
+                \caption{Hustota pravděpodobnosti exponenciálního rozdělení se střední hodnotou 1/13.5}
+            \end{center}
+        \end{wrapfigure}
+
+            Na obrázku č. 4.2 vidíme test, zda-li třída vrátí správnou hodnotu, pokud chceme vědět, jaká je pravděpodobnost, že $ t < 10 $.
+
+        %\begin{figure}[h]
+        %  \centering
+        %   \includegraphics[scale=0.75]{pic/testMethod.png}
+        %   \caption{Ukázka kódu unit testu} 
+        %\end{figure}
 
 \chapter{Návod k použití}
 
@@ -300,9 +334,13 @@
         V současné podobě aplikace je nový diagram založen při každém spuštění aplikace. Jedná se o prázný seznam bloků v instanci SchemeHolder.
     %\section*{Uložení a otevření nového diagramu}
     \subsection*{Přidání prvku}
-        Pomocí ovládacích prvků lze přidat bloky a do nich jednotlivé paralelní komponenty. Blok může reprezentovat jedna komponenta typu Item
+        Pomocí ovládacích prvků lze přidat bloky a do nich jednotlivé paralelní komponenty. 
+        Blok může reprezentovat jedna, či více komponent typu Item.
     \subsection*{Výpočty}
-        Uživatel po nadefinování schématu se může dotázat na pravděpodobnost bezporuchovosti systému v zadaném čase.
+        Uživatel po nadefinování schématu se může dotázat na pravděpodobnost bezporuchovosti v zadaném čase pro konkrétní bloky schématu, či pro celé schéma.
+        Dále lze zobrazit průběh distribuční funkce pro libovonlý blok v separátním okně, za pomoci knihovny OxyPlot \cite{15}
+    \subsection*{Ukázka použití}
+    Bylo nadefinováno schéma dle obrázku ... TO DO, 
     \begin{figure}[h]
         \centering
         \includegraphics[scale=1]{pic/gui.png}
@@ -363,6 +401,8 @@
         GoldSim: Monte Carlo Simulation Software. GoldSim Technology Group [online]. [cit. 2019-05-07]. Dostupné z: https://www.goldsim.com/Web/Products/GoldSim/Overview/
     \bibitem{14}
         The R Project for Statistical Computing. The R Project [online]. [cit. 2019-05-07]. Dostupné z: https://www.r-project.org/
+    \bibitem{15}
+        OxyPlot’s documentation. OxyPlot [online]. [cit. 2019-05-07]. Dostupné z: https://www.oxyplot.org/
 \end{thebibliography}
 
 \end{document}
