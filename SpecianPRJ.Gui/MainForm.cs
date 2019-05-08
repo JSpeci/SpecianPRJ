@@ -15,6 +15,8 @@ namespace SpecianPRJ.Gui
     {
         private RBDDiagram diagram;
         private SchemeDrawHelper drawHelper;
+        private SchemeCalculator calculator;
+
         private PlotWindow plotWindow;
 
         public MainForm()
@@ -22,6 +24,18 @@ namespace SpecianPRJ.Gui
             InitializeComponent();
             diagram = new RBDDiagram();
             drawHelper = new SchemeDrawHelper();
+            calculator = new SchemeCalculator();
+            DrawRectangle();
+//            InitDemoScheme();
+        }
+
+        private void InitDemoScheme()
+        {
+            diagram = new RBDDiagram();
+            drawHelper = new SchemeDrawHelper();
+            calculator = new SchemeCalculator();
+            diagram.setUpTestScheme();
+            updateTextFormOfDiagram();
         }
 
         private void DrawRectangle()
@@ -72,7 +86,7 @@ namespace SpecianPRJ.Gui
         {
             if (double.TryParse(this.textBox5.Text, out var time))
             {
-                diagram.CalculateItself(time);
+                MessageBox.Show("Pravděpodobnost bezporuchového provozu zadaného systému v čase " + time.ToString() + " hodin je " + (diagram.CalculateItself(time)*100).ToString() + " % ");
             }
         }
 

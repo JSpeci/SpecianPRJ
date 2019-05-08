@@ -329,7 +329,11 @@
     Pro standartní spuštění aplikace stačí otevřít soubor SpecianPRJ.Gui.exe ve složce \path{SpecianPRJ\SpecianPRJ.Gui\bin\Debug}
 
     Pro obě varianty spuštní je nutným předpokladem nainstalovaný plný .NET Framework 4.6.1 a novější. 
-
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.70]{pic/gui.png}
+        \caption{Ovládací panel grafického uživatelského rozhraní se zadaným diagramem} 
+    \end{figure}
     \subsection*{Založení nového diagramu}
         V současné podobě aplikace je nový diagram založen při každém spuštění aplikace. Jedná se o prázný seznam bloků v instanci SchemeHolder.
     %\section*{Uložení a otevření nového diagramu}
@@ -337,20 +341,20 @@
         Pomocí ovládacích prvků lze přidat bloky a do nich jednotlivé paralelní komponenty. 
         Blok může reprezentovat jedna, či více komponent typu Item.
     \subsection*{Výpočty}
-        Uživatel po nadefinování schématu se může dotázat na pravděpodobnost bezporuchovosti v zadaném čase pro konkrétní bloky schématu, či pro celé schéma.
+        Uživatel po nadefinování schématu se může dotázat na pravděpodobnost bezporuchovosti v zadaném čase pro zadané schéma.
         Dále lze zobrazit průběh distribuční funkce pro libovonlý blok v separátním okně, za pomoci knihovny OxyPlot \cite{15}
     \subsection*{Ukázka použití}
         Na obrázku č. 5.1 vidíme hlavní okno aplikace. Po pravé straně je ovládací panel pro přidvání položek do diagramu.
         Na obrázku č. 5.2 vidíme vedlejší okno s průběhem distribuční funkce vybrané komponenty.
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.70]{pic/gui.png}
-        \caption{Ovládací panel grafického uživatelského rozhraní se zadaným diagramem} 
+        \includegraphics[scale=0.50]{pic/oxy.png}
+        \caption{Distribuční funkce exponenciálního rozdělení pro položku s indexem 1} 
     \end{figure}
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.50]{pic/oxy.png}
-        \caption{Distribuční funkce exponenciálního rozdělení pro položku s indexem 1} 
+        \includegraphics[scale=0.8]{pic/hlaska.png}
+        \caption{Pravděpodobnost bezporuchovosti zařízení znázorněné diagramem na obrázku č. 5.1 za předpokladu, že pro všechny komponenty platí: $ \lambda = 0.75 $} 
     \end{figure}
 
 

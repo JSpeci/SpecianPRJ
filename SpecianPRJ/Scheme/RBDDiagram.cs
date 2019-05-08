@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpecianPRJ.Distributions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,9 @@ namespace SpecianPRJ.Scheme
             SchemeCalculator = new SchemeCalculator();
         }
 
-        public void CalculateItself(double time)
+        public double CalculateItself(double time)
         {
-            SchemeCalculator.CalculateScheme(this.SchemeHolder, time);
+            return SchemeCalculator.CalculateScheme(this.SchemeHolder, time);
         }
 
         public override string ToString()
@@ -51,6 +52,43 @@ namespace SpecianPRJ.Scheme
             }
 
             return sb.ToString();
+        }
+
+        public void setUpTestScheme()
+        {
+            SchemeHolder.Blocks.Add(new Blocks.Block() { Name = "Block1" });
+            SchemeHolder.Blocks.Add(new Blocks.Block() { Name = "Block2" });
+            SchemeHolder.Blocks.Add(new Blocks.Block() { Name = "Block3" });
+            SchemeHolder.Blocks.Add(new Blocks.Block() { Name = "Block4" });
+            SchemeHolder.Blocks.Add(new Blocks.Block() { Name = "Block5" });
+
+            var block = SchemeHolder.Blocks.ElementAt(0);
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 0 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 1 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 2 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 3 });
+
+            block = SchemeHolder.Blocks.ElementAt(1);
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 4 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 5 });
+
+            block = SchemeHolder.Blocks.ElementAt(2);
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 6 });
+
+
+            block = SchemeHolder.Blocks.ElementAt(3);
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 7 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 8 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 9 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 10 });
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 11 });
+
+
+            block = SchemeHolder.Blocks.ElementAt(4);
+            block.ParalelItems.Add(new Blocks.Item("name", new ExponencialDistribution(0.75D)) { NumberId = 12 });
+
+
+
         }
     }
 }

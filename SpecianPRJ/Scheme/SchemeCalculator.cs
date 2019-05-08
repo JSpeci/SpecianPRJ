@@ -9,18 +9,24 @@ namespace SpecianPRJ.Scheme
     public class SchemeCalculator
     {
         //params
-        public void CalculateScheme(SchemeHolder scheme, double time)
+        public double CalculateScheme(SchemeHolder scheme, double time)
         {
-            foreach(var block in scheme.Blocks)
+            double probOfScheme = 1D;
+            foreach (var block in scheme.Blocks)
             {
                 //calculate probability of serial items
-
-                foreach(var item in block.ParalelItems)
+                if(block.ParalelItems.Count > 0)
                 {
+                    double probabilityOfFailureOfBlock = 1D;
+                    foreach (var item in block.ParalelItems)
+                    {
+                        probabilityOfFailureOfBlock *= (item.Distribution.CumulativeDistributionFunction(time));
+                    }
 
-                    //calculate probablity from paralel items
+                    probOfScheme *= (1 - probabilityOfFailureOfBlock);
                 }
             }
+            return probOfScheme;
         }
     }
 }
