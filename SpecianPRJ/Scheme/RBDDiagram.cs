@@ -13,6 +13,7 @@ namespace SpecianPRJ.Scheme
     {
         private SchemeCalculator SchemeCalculator;
         public SchemeHolder SchemeHolder { get; internal set; }
+        public int ItemCounter { get; set; } = 0;
 
         public RBDDiagram()
         {

@@ -340,11 +340,17 @@
         Uživatel po nadefinování schématu se může dotázat na pravděpodobnost bezporuchovosti v zadaném čase pro konkrétní bloky schématu, či pro celé schéma.
         Dále lze zobrazit průběh distribuční funkce pro libovonlý blok v separátním okně, za pomoci knihovny OxyPlot \cite{15}
     \subsection*{Ukázka použití}
-    Bylo nadefinováno schéma dle obrázku ... TO DO, 
+        Na obrázku č. 5.1 vidíme hlavní okno aplikace. Po pravé straně je ovládací panel pro přidvání položek do diagramu.
+        Na obrázku č. 5.2 vidíme vedlejší okno s průběhem distribuční funkce vybrané komponenty.
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=1]{pic/gui.png}
-        \caption{Ovládací panel grafického uživatelského rozhraní} 
+        \includegraphics[scale=0.70]{pic/gui.png}
+        \caption{Ovládací panel grafického uživatelského rozhraní se zadaným diagramem} 
+    \end{figure}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.50]{pic/oxy.png}
+        \caption{Distribuční funkce exponenciálního rozdělení pro položku s indexem 1} 
     \end{figure}
 
 
@@ -369,7 +375,7 @@
     nyní je aplikace pouze demonstrační a diagram je nutné manuálně vytvořit po spuštění.
 
     V práci jsem si poradil s vykreslením schématu za pomoci kreslení geometrických primitiv a jejich skládání. 
-    Pro zobrazení distribučních funkcí jednotlivých komponent diagramu byla použita knihovna OxyPlot.
+    Pro zobrazení distribučních funkcí jednotlivých komponent diagramu byla použita knihovna OxyPlot. Pro určení maxima na vodorovné ose byl použit 95 procentní kvantil.
     Veškeré výstupy jsou dostupné i v textové podobě.
 
     Pro grafické uživatelské rozhraní by bylo vhodné přejít na knihovny WPF, které jsou nástupcem zastaralých Windows Forms.

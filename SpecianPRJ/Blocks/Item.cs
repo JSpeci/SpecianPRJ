@@ -11,6 +11,7 @@ namespace SpecianPRJ.Blocks
     {
         public string Name { get; set; }
         public IDistribution Distribution { get; set; }
+        public int NumberId { get; set; }
 
         public Item(string name, IDistribution distribution)
         {

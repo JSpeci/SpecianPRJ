@@ -32,9 +32,9 @@ namespace SpecianPRJ.Blocks
         public double LastRequestedTime = 0D;
 
         //list of paralel items
-        public List<IItem> ParalelItems { get; set; } = new List<IItem>();
+        public List<Item> ParalelItems { get; set; } = new List<Item>();
 
-        public void AddITem(IItem item)
+        public void AddITem(Item item)
         {
             ParalelItems.Add(item);
         }
