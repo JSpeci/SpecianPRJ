@@ -26,7 +26,7 @@ namespace SpecianPRJ.Gui
             drawHelper = new SchemeDrawHelper();
             calculator = new SchemeCalculator();
             DrawRectangle();
-//            InitDemoScheme();
+            //InitDemoScheme();
         }
 
         private void InitDemoScheme()

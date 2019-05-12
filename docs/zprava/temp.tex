@@ -219,13 +219,13 @@
 \chapter{Přehled existujících softwarových nástrojů}
     Zde uvedu seznam existujících softwarových řešení pro výpočty v oblasti pravděpodobnosti a teorie spolehlivosti, jejichž prospekty a ukázky jsem prošel.
     \begin{itemize} 
-    \item ReliaSoft - analýza spolehlivosti \cite{8}
-    \item Weibull.com - Reliability Analysis Software \cite{9}
-    \item ItemSoft - Reliability Engineering Software \cite{10}
-    \item AldService - Reliability Engineering \cite{11}
-    \item Bqr - Leader in Reliability \& Maintenance Engineering and EDA \cite{12}
-    \item Goldsim - Reliability Engineering and Risk Analysis for Complex Engineered Systems \cite{13}
-    \item R Project - free software environment for statistical computing and graphics \cite{14}
+        \item ReliaSoft - analýza spolehlivosti, www.reliasoft.com. \cite{8}
+        \item Weibull.com - Reliability Analysis Software, www.weibull.com. \cite{9}
+        \item ItemSoft - Reliability Engineering Software, www.itemsoft.com. \cite{10}
+        \item AldService - Reliability Engineering, www.aldservice.com. \cite{11}
+        \item Bqr - Leader in Reliability \& Maintenance Engineering and EDA, www.bqr.com. \cite{12}
+        \item Goldsim - Reliability Engineering and Risk Analysis for Complex Engineered Systems,www.goldsim.com. \cite{13}
+        \item R Project - free software environment for statistical computing and graphics, www.r-project.org. \cite{14}
     \end{itemize}
 
 \chapter{Návrh desktopové aplikce .NET}
@@ -235,22 +235,20 @@
         \includegraphics[scale=0.85]{pic/class.png}
         \caption{Zjednodušený class diagram nejčastěji používaných objektů} 
     \end{figure}
-        \subsubsection*{Item}
-            Instance třídy Item jsou objekty reprezentující jeden prvek diagramu, například na obrázku č. 1.4 block číslo 1. 
-            Obsahuje dva hlavní atributy a tím je druh rozdělelní pravděpodobnosti a jméno.
-            Každá komponenta obsahuje vlastní objekt rozdělení.
-        \subsubsection*{Block}
-            Jedná se o hlavní stvební stavební prvek RBD diagramu. 
-            Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent typu Item. 
-            Instance třídy Block reprezentuje například bloky č. 4 a 6 na obrázku č. 4.1.
-            Tyto bloky jsou spojovány do série za sebe. 
-        \subsubsection*{IDistribution}
-            Rozhraní pro rozdělení pravděpodobnosti, které je jedním z atributů objektů typu Item, či může být spočítáno v objektu typu Block.
+        \subsubsection*{IDistribution a ExponencialDistribution}
+            Rozhraní pro rozdělení pravděpodobnosti, které je jedním z atributů objektů typu Item.
             Objekty imlementující toto rozhraní musí umět poskytnout střední hodnotu, hodnotu distribuční funkce v daném bodě, hodnotu pravděpodobnostní funkce v daném bodě.
-        \subsubsection*{ExponencialDistribution}
-            Instance této třídy reprezentuje konkrétní exponenciální rozdělení pravděpodobnosti se zadaným parametrem $ \lambda $. 
-
-
+            Jedním z implementujících tříd rozhraní IDistribution je ExponencialDistribution. Instance této třídy reprezentuje konkrétní exponenciální 
+            rozdělení pravděpodobnosti se zadaným parametrem $ \lambda $.
+        \subsubsection*{Item}
+            Pro reprezentaci jednoho bloku diagramu byla navržena třída Item. Její instance jsou objekty reprezentující jeden prvek diagramu, například na obrázku č. 1.4 block číslo 1. 
+            Obsahuje dva hlavní atributy a tím je objekt exponenciálního rozdělelní pravděpodobnosti, jméno a další atributy.
+            Na základě předaného rozdělení se každého objektu dotázat na hodnoty jeho distribuční funkce. Tyto hodnoty jsou použity pro výpočet pravděpodobnosti bezporuchovosti.
+        \subsubsection*{Block}
+            Jedná se o hlavní stvební stavební prvek v sériově-paralelním RBD diagramu.
+            Může reprezentovat pouze jednu komponentu, či kolekci paralelních komponent typu Item. 
+            Tyto bloky jsou spojovány do série za sebe.
+            Instance třídy Block reprezentuje například bloky č. 4 a 6 na obrázku č. 4.1.
         %\begin{wrapfigure}{l}{265pt}
         %    \begin{center}
         %        \includegraphics[width=250pt]{pic/class.png}
@@ -259,9 +257,9 @@
         %\end{wrapfigure}
     
     \section*{Pomocné třídy}
-        SchemeHolder je objekt držící jednotlivé bloky v seznamu, tak jak byly vloženy. 
+        SchemeHolder je objekt držící jednotlivé bloky v seznamu, tak jak byly vloženy. Přidávané bloky řadí za sebe do spojového seznamu.
         SchemeCalculator je servisní třída, která má za úkol na základě předaných parametrů na uloženém schématu spočítat dílčí pravděpodobnosti bezporuchovosti jednotlivých komponent,
-         tak i celkového diagramu.
+        tak i celkového diagramu. Této třídy se uživatelské rozhraní dotazuje na hodnoty pravděpodobnosti. 
 
 \chapter{Průběh vývoje}
     Pro vývoj jsem se rozhodl použít WinForms z .NET Frameworku, jelikož umožňuje jednoduchou tvorbu formulářových aplikací pomocí grafického designeru.
@@ -309,7 +307,7 @@
         \begin{wrapfigure}{l}{265pt}
             \begin{center}
                 \includegraphics[width=250pt]{pic/testHustota.png}
-                \caption{Hustota pravděpodobnosti exponenciálního rozdělení se střední hodnotou 1/13.5}
+                \caption{Hustota pravděpodobnosti exponenciálního rozdělení se střední hodnotou 13.5}
             \end{center}
         \end{wrapfigure}
 
@@ -354,33 +352,36 @@
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.8]{pic/hlaska.png}
-        \caption{Pravděpodobnost bezporuchovosti zařízení znázorněné diagramem na obrázku č. 5.1 za předpokladu, že pro všechny komponenty platí: $ \lambda = 0.75 $} 
+        \caption{Pravděpodobnost bezporuchovosti zařízení znázorněné diagramem na obrázku č. 5.1 V tomto příkladu mají všechny komponenty: $ \lambda = 0.75 $} 
     \end{figure}
 
 
 \chapter{Závěr}
-    Ve vývojovém studiu Microsoft Visual Studio byl vytvořen projekt s rozdělenou strukturou podprojektů.
 
-    Seznámil jsem se s teorií pravděpodobnosti a teorií spolehlivosti.
-    Navrhl jsem jednoduchou objektovou strukturu, na níž jsem si vyzkoušel spočítat pravděpodobnost bezporuchovosti, 
+    Byla navrhnuta jednoduchá objektová struktura, na níž lze spočítat pravděpodobnost bezporuchovosti, 
     distribuční funkci pro exponenciální rozdělení a další potřebné charakteristiky.
+    Ve vývojovém studiu Microsoft Visual Studio byl vytvořen projekt s rozdělenou strukturou podprojektů pro grafické rozhraní, objektovou stukturu a testování.
 
     Na základě této objektové struktury jsem navrhl grafické rozhraní za pomoci knihoven WinForms, 
     ve kterém uživatel aplikace snadno nadefinuje strukturu komponent v sérii a může se na definovanou strukturu dotázat
-    na pravděpodobnost bezporuchovosti v zadaném čase. Správnost výpočtů pravděpodobností a hodnot distribuční funkce byla otestována za pomoci unit testů.
+    na pravděpodobnost bezporuchovosti v zadaném čase. 
+    Správnost výpočtů pravděpodobností a hodnot distribuční funkce byla otestována za pomoci unit testů.
 
-    Tvorba a zapojení komponent v RBD diagramu bylo zjednodušeno na sériový systém, kde jednotlivé komponenty mohou reprezentovat paralelní systém.
+    Tvorba a zapojení komponent v RBD diagramu bylo zjednodušeno na sériově-paralelní systém, kde jednotlivé bloky jsou v sérii 
+    a každý jednotlivý blok může obsahovat několik paralelních komponent.
 
     Při vývoji aplikace jsem používal verzovací nástroj git, který mi umožnil si v různých větvích držet různé funkční a nefunkční cesty vývoje a spojovat do sebe různé
     věvte pro dosažení funkčního celku. \cite{7}
 
+    Vykreslení schématu do plochy ovládacího okna probíhá za pomoci geometrických primitiv a jejich skládání. 
+    Konkrétně se jedná o úsečky a textová pole s indexem komponenty.
+    ro zobrazení distribučních funkcí jednotlivých komponent diagramu byla použita knihovna OxyPlot. 
+    Pro určení maxima na vodorovné ose byl použit 95 procentní kvantil.
+    Veškeré výstupy jsou dostupné i v textové podobě.
+
     Pro možnost složitějších diagramů by bylo nutné předělat objektový model včetně výpočetního postupu tak, aby paralelní bloky mohly být opět jiné objekty typu Block.
     Dále by bylo vhodné k aplikaci přidat možnost uložení a znovuotevírání uložených diagramů,
     nyní je aplikace pouze demonstrační a diagram je nutné manuálně vytvořit po spuštění.
-
-    V práci jsem si poradil s vykreslením schématu za pomoci kreslení geometrických primitiv a jejich skládání. 
-    Pro zobrazení distribučních funkcí jednotlivých komponent diagramu byla použita knihovna OxyPlot. Pro určení maxima na vodorovné ose byl použit 95 procentní kvantil.
-    Veškeré výstupy jsou dostupné i v textové podobě.
 
     Pro grafické uživatelské rozhraní by bylo vhodné přejít na knihovny WPF, které jsou nástupcem zastaralých Windows Forms.
 

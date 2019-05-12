@@ -26,7 +26,9 @@ namespace SpecianPRJ.Scheme
                     probOfScheme *= (1 - probabilityOfFailureOfBlock);
                 }
             }
-            return probOfScheme;
+            var resultRounded = Math.Round(((probOfScheme * 100D) % 1) * 100D) / 100D;
+            resultRounded += Math.Round(probOfScheme * 100D);
+            return resultRounded /100D;
         }
     }
 }
