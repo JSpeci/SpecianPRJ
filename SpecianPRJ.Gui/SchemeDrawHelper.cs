@@ -30,6 +30,7 @@ namespace SpecianPRJ.Gui
             public int x;
             public int y;
             public string text;
+            public int size;
         }
 
         public class RectanglesAndLines
@@ -51,7 +52,7 @@ namespace SpecianPRJ.Gui
             RectanglesAndLines result = new RectanglesAndLines();
             int x = 0;
             int y = 0;
-            int xSize = 60;
+            int xSize = 70;
             int ySize = 40;
             int space = 40;
             int lineWidth = 2;
@@ -61,10 +62,18 @@ namespace SpecianPRJ.Gui
             result.Lines.Add(new MyLine()
             {
                 width = lineWidth,
-                x1 = xOffset - 45,
-                y1 = yOffset,
-                x2 = xOffset,
-                y2 = yOffset,
+                x1 = xOffset + 80,
+                y1 = yOffset + ySize/2,
+                x2 = xOffset + 100,
+                y2 = yOffset + ySize/2,
+            });
+
+            result.Texts.Add(new MyText()
+            {
+                x = xOffset + 80,
+                y = yOffset ,
+                text = "In",
+                size = 13,
             });
 
             foreach (var b in scheme.Blocks)
@@ -85,6 +94,15 @@ namespace SpecianPRJ.Gui
                         x = xOffset + ((x * xSize) + x * space) +5,
                         y = yOffset + (y * ySize) + y * space +5,
                         text = i.NumberId.ToString(),
+                        size = 11,
+                    });
+
+                    result.Texts.Add(new MyText()
+                    {
+                        x = xOffset + ((x * xSize) + x * space) + 5,
+                        y = yOffset + (y * ySize) + y * space + 22,
+                        text = "Exp(" + i.Distribution.Lambda.ToString()+")",
+                        size = 8,
                     });
 
                     y++;
@@ -121,6 +139,7 @@ namespace SpecianPRJ.Gui
                         x = xOffset + ((x * xSize) + x * space),
                         y = yOffset - 30,
                         text = b.Name,
+                        size = 13,
                     });
                     result.Lines.Add(new MyLine()
                     {

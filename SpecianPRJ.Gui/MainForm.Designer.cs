@@ -47,10 +47,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -68,7 +68,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Add paralel Item to";
+            this.button1.Text = "Add paralel Item to block";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -208,7 +208,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 3;
-            this.textBox5.Text = "10000";
+            this.textBox5.Text = "1";
             this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // button3
@@ -253,6 +253,14 @@
             this.panel4.Size = new System.Drawing.Size(240, 89);
             this.panel4.TabIndex = 1;
             // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(178, 29);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
+            this.numericUpDown2.TabIndex = 4;
+            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(6, 55);
@@ -282,14 +290,6 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Show cumulative distribution of Item";
             this.label10.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(178, 29);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(55, 20);
-            this.numericUpDown2.TabIndex = 4;
-            this.numericUpDown2.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
             // 
             // panel5
             // 
@@ -322,6 +322,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "MainForm";
             this.Text = "RBD Diagram draw and calc";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

@@ -35,7 +35,8 @@ namespace SpecianPRJ.Gui
         private FunctionSeries getFunction()
         {
             FunctionSeries fs = new FunctionSeries();
-            for (int x = Minimum; x <= Maximum; x++)
+            double step = (Maximum - Minimum) / 100D;
+            for (double x = Minimum; x <= Maximum; x+= step)
             {
                 DataPoint dp = new DataPoint(x, Distribution.CumulativeDistributionFunction((double)x));
                 fs.Points.Add(dp);

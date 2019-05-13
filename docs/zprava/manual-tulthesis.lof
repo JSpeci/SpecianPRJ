@@ -1,19 +1,19 @@
 \select@language {czech}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Příklad průběhu distribuční funkce exponenciálního rozdělení}}{10}{figure.1.1}% 
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Příklad grafu hustoty pravděpodobnosti exponenciálního rozdělení}}{12}{figure.1.2}% 
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Příklad průběhu distribuční funkce exponenciálního rozdělení}}{12}{figure.1.3}% 
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Příklad sériového zapojení komponent}}{13}{figure.1.4}% 
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Příklad paralelního zapojení kopmonent}}{13}{figure.1.5}% 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Příklad průběhu distribuční funkce exponenciálního rozdělení}}{11}{figure.1.1}% 
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Příklad grafu hustoty pravděpodobnosti exponenciálního rozdělení}}{13}{figure.1.2}% 
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Příklad průběhu distribuční funkce exponenciálního rozdělení}}{13}{figure.1.3}% 
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Příklad sériového zapojení komponent}}{14}{figure.1.4}% 
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Příklad paralelního zapojení kopmonent}}{14}{figure.1.5}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Zjednodušený class diagram nejčastěji používaných objektů}}{15}{figure.3.1}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Zjednodušený class diagram nejčastěji používaných objektů}}{16}{figure.3.1}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Možnosti tvorby diagramu}}{17}{figure.4.1}% 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Ukázka kódu unit testu}}{18}{figure.4.2}% 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Hustota pravděpodobnosti exponenciálního rozdělení se střední hodnotou 13.5}}{18}{figure.4.3}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Možnosti tvorby diagramu}}{18}{figure.4.1}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Ukázka kódu unit testu}}{19}{figure.4.2}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Hustota pravděpodobnosti exponenciálního rozdělení se střední hodnotou 13.5}}{19}{figure.4.3}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Ovládací panel grafického uživatelského rozhraní se zadaným diagramem}}{19}{figure.5.1}% 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Distribuční funkce exponenciálního rozdělení pro položku s indexem 1}}{20}{figure.5.2}% 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Pravděpodobnost bezporuchovosti zařízení znázorněné diagramem na obrázku č. 5.1 V tomto příkladu mají všechny komponenty: $ \lambda = 0.75 $}}{20}{figure.5.3}% 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Ovládací panel grafického uživatelského rozhraní se zadaným diagramem}}{20}{figure.5.1}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Distribuční funkce exponenciálního rozdělení pro položku s indexem 1}}{21}{figure.5.2}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Pravděpodobnost bezporuchovosti zařízení znázorněné diagramem na obrázku č. 5.1 V tomto příkladu mají všechny komponenty: $ \lambda = 0.75 $}}{21}{figure.5.3}% 
 \addvspace {10\p@ }

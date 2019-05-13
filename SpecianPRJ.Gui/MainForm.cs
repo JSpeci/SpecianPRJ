@@ -43,7 +43,24 @@ namespace SpecianPRJ.Gui
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
-            formGraphics.FillRectangle(myBrush, new Rectangle(270, 20, 700, 500));
+            int sizeX = (diagram.SchemeHolder.Blocks.Count * 150) - (diagram.SchemeHolder.Blocks.Count * 15);
+            if (sizeX > 1500)
+            {
+                sizeX = 1500;
+
+            }
+            if (sizeX < 200)
+            {
+                sizeX = 200;
+            }
+            int maxOfItems = 1;
+            int sizeY = 600;
+            if (diagram.SchemeHolder.Blocks.Select(i => i.ParalelItems.Count).ToList().Count != 0)
+            {
+                maxOfItems = diagram.SchemeHolder.Blocks.Select(i => i.ParalelItems.Count).ToList().Max();
+            }
+            sizeY = 60 + maxOfItems * 80;
+            formGraphics.FillRectangle(myBrush, new Rectangle(270, 20, sizeX, sizeY));
             myBrush.Dispose();
             formGraphics.Dispose();
         }
@@ -54,9 +71,23 @@ namespace SpecianPRJ.Gui
             Blocks.Block block = new Blocks.Block();
             block.Name = textBox4.Text;
 
-            diagram.SchemeHolder.Blocks.Add(block);
+            if (diagram.SchemeHolder.Blocks.Count < 13)
+            {
+                diagram.SchemeHolder.Blocks.Add(block);
 
-            updateTextFormOfDiagram();
+                if (double.TryParse(this.textBox2.Text, out var lambda))
+                {
+                    Distributions.ExponencialDistribution exp = new Distributions.ExponencialDistribution(lambda);
+                    Blocks.Item item = new Blocks.Item(textBox1.Text, exp);
+                    item.NumberId = diagram.ItemCounter++;
+                    block.AddITem(item);
+                }
+
+                textBox4.Text = "Block" + (diagram.SchemeHolder.Blocks.Count + 01).ToString();
+
+                updateTextFormOfDiagram();
+            }
+
         }
 
         //add paralel item button clicked
@@ -70,15 +101,20 @@ namespace SpecianPRJ.Gui
 
             var block = diagram.SchemeHolder.Blocks.ElementAt((int)this.numericUpDown1.Value);
 
-            if (double.TryParse(this.textBox2.Text, out var lambda))
+            if (block.ParalelItems.Count < 10)
             {
-                Distributions.ExponencialDistribution exp = new Distributions.ExponencialDistribution(lambda);
-                Blocks.Item item = new Blocks.Item(textBox1.Text, exp);
-                item.NumberId = diagram.ItemCounter++;
-                block.AddITem(item);
+                if (double.TryParse(this.textBox2.Text, out var lambda))
+                {
+                    Distributions.ExponencialDistribution exp = new Distributions.ExponencialDistribution(lambda);
+                    Blocks.Item item = new Blocks.Item(textBox1.Text, exp);
+                    item.NumberId = diagram.ItemCounter++;
+                    block.AddITem(item);
+                }
+
+                updateTextFormOfDiagram();
+
             }
 
-            updateTextFormOfDiagram();
         }
 
         //compute button
@@ -86,7 +122,7 @@ namespace SpecianPRJ.Gui
         {
             if (double.TryParse(this.textBox5.Text, out var time))
             {
-                MessageBox.Show("Pravděpodobnost bezporuchového provozu zadaného systému v čase " + time.ToString() + " hodin je " + (diagram.CalculateItself(time)*100).ToString() + " % ");
+                MessageBox.Show("Pravděpodobnost bezporuchového provozu zadaného systému v čase " + time.ToString() + " hodin je " + (diagram.CalculateItself(time) * 100).ToString() + " % ");
             }
         }
 
@@ -106,7 +142,7 @@ namespace SpecianPRJ.Gui
                 plotWindow.Distribution = selectedItem.Distribution;
                 plotWindow.Minimum = 0;
 
-                var maximum = (int) selectedItem.Distribution.QuantileFunction(0.97D);
+                var maximum = (int)selectedItem.Distribution.QuantileFunction(0.995D);
 
                 plotWindow.Maximum = maximum;
                 plotWindow.Show();
@@ -154,7 +190,7 @@ namespace SpecianPRJ.Gui
             {
                 System.Drawing.Graphics formGraphics = this.CreateGraphics();
                 string drawString = text.text;
-                System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 13);
+                System.Drawing.Font drawFont = new System.Drawing.Font("Arial", text.size);
                 System.Drawing.SolidBrush drawBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
                 System.Drawing.StringFormat drawFormat = new System.Drawing.StringFormat();
                 formGraphics.DrawString(drawString, drawFont, drawBrush, text.x, text.y, drawFormat);
@@ -179,6 +215,9 @@ namespace SpecianPRJ.Gui
 
         }
 
-
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
     }
 }
