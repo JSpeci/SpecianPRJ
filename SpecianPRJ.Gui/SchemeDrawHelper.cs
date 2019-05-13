@@ -93,8 +93,8 @@ namespace SpecianPRJ.Gui
                     {
                         x = xOffset + ((x * xSize) + x * space) +5,
                         y = yOffset + (y * ySize) + y * space +5,
-                        text = i.NumberId.ToString(),
-                        size = 11,
+                        text = i.NumberId.ToString() + ": " + i.Name,
+                        size = 8,
                     });
 
                     result.Texts.Add(new MyText()
