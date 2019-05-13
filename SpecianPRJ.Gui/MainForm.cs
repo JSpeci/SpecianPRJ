@@ -94,12 +94,12 @@ namespace SpecianPRJ.Gui
         private void button1_Click(object sender, EventArgs e)
         {
             //correction of upDown numeric
-            if ((int)this.numericUpDown1.Value < 0 || (int)this.numericUpDown1.Value >= diagram.SchemeHolder.Blocks.Count)
+            if ((int)this.numericUpDown1.Value < 1 || (int)this.numericUpDown1.Value >= diagram.SchemeHolder.Blocks.Count+1)
             {
-                this.numericUpDown1.Value = diagram.SchemeHolder.Blocks.Count - 1;
+                this.numericUpDown1.Value = diagram.SchemeHolder.Blocks.Count;
             }
 
-            var block = diagram.SchemeHolder.Blocks.ElementAt((int)this.numericUpDown1.Value);
+            var block = diagram.SchemeHolder.Blocks.ElementAt((int)this.numericUpDown1.Value-1);
 
             if (block.ParalelItems.Count < 10)
             {
@@ -218,6 +218,12 @@ namespace SpecianPRJ.Gui
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            numericUpDown1.Value = 1;
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
