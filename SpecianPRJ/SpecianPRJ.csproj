@@ -46,6 +46,7 @@
     <Compile Include="Blocks\Block.cs" />
     <Compile Include="Blocks\Item.cs" />
     <Compile Include="Blocks\Scheme.cs" />
+    <Compile Include="Distributions\CustomExponencialDistribution.cs" />
     <Compile Include="Distributions\ExponencialDistribution.cs" />
     <Compile Include="Distributions\IdentityDistribution.cs" />
     <Compile Include="Interfaces\IBlock.cs" />

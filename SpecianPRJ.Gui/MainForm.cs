@@ -1,4 +1,5 @@
-﻿using SpecianPRJ.Scheme;
+﻿using SpecianPRJ.Interfaces;
+using SpecianPRJ.Scheme;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace SpecianPRJ.Gui
             InitializeComponent();
             diagram = new RBDDiagram();
             drawHelper = new SchemeDrawHelper();
-            calculator = new SchemeCalculator();
+            calculator = new SchemeCalculator(diagram.SchemeHolder);
             DrawRectangle();
             //InitDemoScheme();
         }
@@ -33,20 +34,21 @@ namespace SpecianPRJ.Gui
         {
             diagram = new RBDDiagram();
             drawHelper = new SchemeDrawHelper();
-            calculator = new SchemeCalculator();
+            calculator = new SchemeCalculator(diagram.SchemeHolder);
             diagram.setUpTestScheme();
-            updateTextFormOfDiagram();
+            UpdateDrawedDiagram();
         }
 
         private void DrawRectangle()
         {
             System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+            System.Drawing.SolidBrush myBrush2 = new System.Drawing.SolidBrush(System.Drawing.Color.White);
             System.Drawing.Graphics formGraphics;
             formGraphics = this.CreateGraphics();
             int sizeX = (diagram.SchemeHolder.Blocks.Count * 150) - (diagram.SchemeHolder.Blocks.Count * 15);
-            if (sizeX > 1500)
+            if (sizeX > 1200)
             {
-                sizeX = 1500;
+                sizeX = 1200;
 
             }
             if (sizeX < 200)
@@ -60,8 +62,10 @@ namespace SpecianPRJ.Gui
                 maxOfItems = diagram.SchemeHolder.Blocks.Select(i => i.ParalelItems.Count).ToList().Max();
             }
             sizeY = 60 + maxOfItems * 80;
+            formGraphics.FillRectangle(myBrush2, new Rectangle(270, 20, 1500, 1000));
             formGraphics.FillRectangle(myBrush, new Rectangle(270, 20, sizeX, sizeY));
             myBrush.Dispose();
+            myBrush2.Dispose();
             formGraphics.Dispose();
         }
 
@@ -71,7 +75,7 @@ namespace SpecianPRJ.Gui
             Blocks.Block block = new Blocks.Block();
             block.Name = textBox4.Text;
 
-            if (diagram.SchemeHolder.Blocks.Count < 13)
+            if (diagram.SchemeHolder.Blocks.Count < 10)
             {
                 diagram.SchemeHolder.Blocks.Add(block);
 
@@ -84,8 +88,8 @@ namespace SpecianPRJ.Gui
                 }
 
                 textBox4.Text = "Block" + (diagram.SchemeHolder.Blocks.Count + 01).ToString();
-
-                updateTextFormOfDiagram();
+                RefreshComboBoxesItems();
+                UpdateDrawedDiagram();
             }
 
         }
@@ -94,12 +98,12 @@ namespace SpecianPRJ.Gui
         private void button1_Click(object sender, EventArgs e)
         {
             //correction of upDown numeric
-            if ((int)this.numericUpDown1.Value < 1 || (int)this.numericUpDown1.Value >= diagram.SchemeHolder.Blocks.Count+1)
-            {
-                this.numericUpDown1.Value = diagram.SchemeHolder.Blocks.Count;
-            }
+            var block = diagram.SchemeHolder.Blocks.Where(i => i.Name == (string)comboBox3.SelectedItem).SingleOrDefault();
 
-            var block = diagram.SchemeHolder.Blocks.ElementAt((int)this.numericUpDown1.Value-1);
+            if (block == null)
+            {
+                return;
+            }
 
             if (block.ParalelItems.Count < 10)
             {
@@ -110,11 +114,10 @@ namespace SpecianPRJ.Gui
                     item.NumberId = diagram.ItemCounter++;
                     block.AddITem(item);
                 }
-
-                updateTextFormOfDiagram();
+                RefreshComboBoxesItems();
+                UpdateDrawedDiagram();
 
             }
-
         }
 
         //compute button
@@ -126,7 +129,19 @@ namespace SpecianPRJ.Gui
             }
         }
 
-        //show plot button 
+        //show plot for Block
+        private void button6_Click(object sender, EventArgs e)
+        {
+            plotWindow = new PlotWindow();
+
+            var selectedBlock = diagram.SchemeHolder.Blocks
+                .Where(i => i.Name == (string)comboBox2.SelectedItem)
+                .FirstOrDefault();
+
+            this.showPlotWindowByDistribution(selectedBlock.Distribution);
+        }
+
+        //show plot for Item button 
         private void button4_Click(object sender, EventArgs e)
         {
             plotWindow = new PlotWindow();
@@ -134,17 +149,33 @@ namespace SpecianPRJ.Gui
             var selectedItem = diagram.SchemeHolder.Blocks
                 .SelectMany(i => i.ParalelItems)
                 .OrderByDescending(i => i.NumberId)
-                .Where(i => i.NumberId == numericUpDown2.Value)
+                .Where(i => (i.NumberId.ToString() + ": " + i.Name) == (string)comboBox1.SelectedItem)
                 .FirstOrDefault();
 
-            if (selectedItem != null)
+            this.showPlotWindowByDistribution(selectedItem.Distribution);
+        }
+
+        //show plot for  all scheme
+        private void button7_Click(object sender, EventArgs e)
+        {
+            plotWindow = new PlotWindow();
+            this.showPlotWindowByDistribution(calculator);
+        }
+
+        private void showPlotWindowByDistribution(IDistributionWithCumulativeDF selectedBlock)
+        {
+            if (selectedBlock != null)
             {
-                plotWindow.Distribution = selectedItem.Distribution;
+                plotWindow.Distribution = selectedBlock;
                 plotWindow.Minimum = 0;
+                double maximum = (int)selectedBlock.QuantileFunction(0.995D);
 
-                var maximum = (int)selectedItem.Distribution.QuantileFunction(0.995D);
+                if (maximum < 1D)
+                {
+                    maximum = 1D;
+                }
 
-                plotWindow.Maximum = maximum;
+                plotWindow.Maximum = (int)maximum;
                 plotWindow.Show();
             }
         }
@@ -161,7 +192,7 @@ namespace SpecianPRJ.Gui
             MessageBox.Show(diagram.ToString());
         }
 
-        private void updateTextFormOfDiagram()
+        private void UpdateDrawedDiagram()
         {
             DrawRectangle();
             var drawScheme = drawHelper.DrawImageByScheme(diagram.SchemeHolder, 200, 80);
@@ -200,6 +231,110 @@ namespace SpecianPRJ.Gui
             }
         }
 
+        private void RefreshComboBoxesItems()
+        {
+            foreach (var b in diagram.SchemeHolder.Blocks)
+            {
+                foreach (var i in b.ParalelItems)
+                {
+                    if (!comboBox1.Items.Contains(i.NumberId.ToString() + ": " + i.Name))
+                    {
+                        comboBox1.Items.Insert(comboBox1.Items.Count, i.NumberId.ToString() + ": " + i.Name);
+                    }
+                }
+            }
+
+            foreach (var b in diagram.SchemeHolder.Blocks)
+            {
+                if (!comboBox2.Items.Contains(b.Name))
+                {
+                    comboBox2.Items.Insert(comboBox2.Items.Count, b.Name);
+                }
+
+                if (!comboBox3.Items.Contains(b.Name))
+                {
+                    comboBox3.Items.Insert(comboBox3.Items.Count, b.Name);
+                }
+            }
+
+            if (comboBox1.SelectedItem == null && comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = 0;
+            }
+            if (comboBox2.SelectedItem == null && comboBox2.Items.Count > 0)
+            {
+                comboBox2.SelectedIndex = 0;
+            }
+            if (comboBox3.SelectedItem == null && comboBox3.Items.Count > 0)
+            {
+                comboBox3.SelectedIndex = 0;
+            }
+
+            this.button1.Enabled = diagram.SchemeHolder.Blocks.Count > 0;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            this.button1.Enabled = false;
+        }
+
+        //delete selected ITEM
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var selectedItem = diagram.SchemeHolder.Blocks
+                .SelectMany(i => i.ParalelItems)
+                .OrderByDescending(i => i.NumberId)
+                .Where(i => (i.NumberId.ToString() + ": " + i.Name) == (string)comboBox1.SelectedItem)
+                .FirstOrDefault();
+
+            if (selectedItem == null)
+            {
+                return;
+            }
+
+            var block = diagram.SchemeHolder.Blocks.Where(i => i.ParalelItems.Any(j => j.NumberId == selectedItem.NumberId)).SingleOrDefault();
+
+            block.ParalelItems.Remove(selectedItem);
+
+            if(block.ParalelItems.Count == 0)
+            {
+                diagram.SchemeHolder.Blocks.Remove(block);
+            }
+
+            comboBox1.Items.Remove(selectedItem.NumberId.ToString() + ": " + selectedItem.Name);
+            UpdateDrawedDiagram();
+        }
+
+        //delete selected BLOCK
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var selectedBlock = diagram.SchemeHolder.Blocks
+                .Where(i => i.Name == (string)comboBox2.SelectedItem)
+                .FirstOrDefault();
+
+            if (selectedBlock == null)
+            {
+                return;
+            }
+
+            diagram.SchemeHolder.Blocks.Remove(selectedBlock);
+            comboBox2.Items.Remove(selectedBlock.Name);
+            comboBox3.Items.Remove(selectedBlock.Name);
+            UpdateDrawedDiagram();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        // selected Item to show plot
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void label7_Click(object sender, EventArgs e)
         {
 
@@ -211,17 +346,6 @@ namespace SpecianPRJ.Gui
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            numericUpDown1.Value = 1;
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
 
         }

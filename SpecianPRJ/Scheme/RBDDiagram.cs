@@ -19,12 +19,12 @@ namespace SpecianPRJ.Scheme
         public RBDDiagram()
         {
             SchemeHolder = new SchemeHolder();
-            SchemeCalculator = new SchemeCalculator();
+            SchemeCalculator = new SchemeCalculator(this.SchemeHolder);
         }
 
         public double CalculateItself(double time)
         {
-            return SchemeCalculator.CalculateScheme(this.SchemeHolder, time);
+            return SchemeCalculator.CalculateReliabilityOfSchemeRoundedTwoDecimalPlaces(time);
         }
 
         public override string ToString()

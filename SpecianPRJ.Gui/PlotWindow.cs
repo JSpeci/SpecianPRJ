@@ -22,7 +22,7 @@ namespace SpecianPRJ.Gui
             InitializeComponent();
         }
 
-        public IDistribution Distribution { get; set; }
+        public IDistributionWithCumulativeDF Distribution { get; set; }
 
         public int Minimum { get; set; } = 50;
         public int Maximum { get; set; } = 60;
@@ -38,7 +38,8 @@ namespace SpecianPRJ.Gui
             double step = (Maximum - Minimum) / 100D;
             for (double x = Minimum; x <= Maximum; x+= step)
             {
-                DataPoint dp = new DataPoint(x, Distribution.CumulativeDistributionFunction((double)x));
+                // R(t) = 1-F(t)
+                DataPoint dp = new DataPoint(x, (1- Distribution.CumulativeDistributionFunction((double)x)));
                 fs.Points.Add(dp);
             }
 

@@ -18,11 +18,7 @@ namespace SpecianPRJ.Blocks
         public string Name { get; set; }
 
         ////computed distribution from paralel items - COMPUTED - INTERNAL SET!
-        //public IDistribution ComputedDistribution {
-        //    get {
-        //        return new ExponencialDistribution(0D);
-        //    }
-        //}
+        public CustomExponencialDistribution Distribution { get; internal set; }
 
         public Block InputBlock { get; set; }
         public Block OutputBlock { get; set; }
@@ -37,6 +33,7 @@ namespace SpecianPRJ.Blocks
         public void AddITem(Item item)
         {
             ParalelItems.Add(item);
+            this.Distribution = new CustomExponencialDistribution(this.ParalelItems.Select(i => (IDistributionWithCumulativeDF) i.Distribution).ToList(), this);
         }
 
         public void AddBlock(Block item)

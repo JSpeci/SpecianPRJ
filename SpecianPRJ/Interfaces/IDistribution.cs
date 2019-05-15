@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace SpecianPRJ.Interfaces
 {
-    public interface IDistribution
+    public interface IDistributionWithCumulativeDF
+    {
+        double CumulativeDistributionFunction(double x);
+        double QuantileFunction(double q);
+    }
+
+    public interface IDistribution : IDistributionWithCumulativeDF
     {
         double Lambda { get; set; }
         double Ex { get; }
         double VarX { get; }
         double GetProbabilityXLowerThan(double input);
         double GetProbabilityXGreaterThan(double input);
-        double CumulativeDistributionFunction(double x);
-        double QuantileFunction(double q);
     }
 }
