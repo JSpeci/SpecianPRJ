@@ -138,6 +138,11 @@ namespace SpecianPRJ.Gui
                 .Where(i => i.Name == (string)comboBox2.SelectedItem)
                 .FirstOrDefault();
 
+            if(selectedBlock == null)
+            {
+                return;
+            }
+
             this.showPlotWindowByDistribution(selectedBlock.Distribution);
         }
 
@@ -151,6 +156,11 @@ namespace SpecianPRJ.Gui
                 .OrderByDescending(i => i.NumberId)
                 .Where(i => (i.NumberId.ToString() + ": " + i.Name) == (string)comboBox1.SelectedItem)
                 .FirstOrDefault();
+
+            if(selectedItem == null)
+            {
+                return;
+            }
 
             this.showPlotWindowByDistribution(selectedItem.Distribution);
         }
@@ -293,7 +303,7 @@ namespace SpecianPRJ.Gui
                 return;
             }
 
-            var block = diagram.SchemeHolder.Blocks.Where(i => i.ParalelItems.Any(j => j.NumberId == selectedItem.NumberId)).SingleOrDefault();
+            var block = diagram.SchemeHolder.Blocks.Where(i => i.ParalelItems.Any(j => j.NumberId == selectedItem.NumberId)).FirstOrDefault();
 
             block.ParalelItems.Remove(selectedItem);
 

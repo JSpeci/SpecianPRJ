@@ -30,13 +30,14 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -48,18 +49,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button9 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -94,13 +94,13 @@
             this.panel1.Size = new System.Drawing.Size(240, 131);
             this.panel1.TabIndex = 1;
             // 
-            // comboBox2
+            // comboBox3
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(114, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 5;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(132, 92);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(101, 21);
+            this.comboBox3.TabIndex = 4;
             // 
             // textBox2
             // 
@@ -153,10 +153,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.Size = new System.Drawing.Size(181, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Paralel Item Adding";
+            this.label1.Text = "Paralel Item Adding with Exp(lambda)";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(114, 3);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 5;
             // 
             // panel2
             // 
@@ -271,6 +279,16 @@
             this.panel4.Size = new System.Drawing.Size(240, 93);
             this.panel4.TabIndex = 1;
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(3, 60);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(232, 23);
+            this.button9.TabIndex = 6;
+            this.button9.Text = "Delete selected ITEM";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -322,6 +340,16 @@
             this.panel6.Size = new System.Drawing.Size(240, 89);
             this.panel6.TabIndex = 1;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(4, 61);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(231, 23);
+            this.button8.TabIndex = 6;
+            this.button8.Text = "Delete selected BLOCK";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(4, 30);
@@ -342,14 +370,6 @@
             this.label12.Text = "Select BLOCK";
             this.label12.Click += new System.EventHandler(this.label1_Click);
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(132, 92);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(101, 21);
-            this.comboBox3.TabIndex = 4;
-            // 
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -369,26 +389,6 @@
             this.button7.Text = "Show reliability graph for scheme";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(4, 61);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(231, 23);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "Delete selected BLOCK";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(3, 60);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(232, 23);
-            this.button9.TabIndex = 6;
-            this.button9.Text = "Delete selected ITEM";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // MainForm
             // 

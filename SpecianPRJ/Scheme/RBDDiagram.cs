@@ -43,9 +43,8 @@ namespace SpecianPRJ.Scheme
                 {
                     sb.AppendLine();
                     sb.Append("   ");
-                    sb.Append(i.Name + "( ");
-                    sb.Append(i.Distribution.Lambda);
-                    sb.Append(" ) ");
+                    sb.Append(i.Name + " - ");
+                    sb.Append("Exp(" + i.Distribution.Lambda + ")");
                 }
                 sb.Append(") ");
                 sb.AppendLine();
